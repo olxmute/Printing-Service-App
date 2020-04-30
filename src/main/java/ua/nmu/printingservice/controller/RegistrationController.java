@@ -19,14 +19,12 @@ public class RegistrationController {
 
     @GetMapping
     public String getRegistrationPage(Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("userDto", userDto);
-
+        model.addAttribute("userDto", new UserDto());
         return "/security/registration";
     }
 
     @PostMapping
-    public String register(@ModelAttribute("userDto") UserDto userDto) {
+    public String register(@ModelAttribute UserDto userDto) {
         userService.registerUser(userDto);
         return "redirect:/login";
     }

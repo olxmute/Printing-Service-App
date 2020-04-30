@@ -1,7 +1,6 @@
 package ua.nmu.printingservice.security.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,7 +12,6 @@ import ua.nmu.printingservice.security.model.SecurityUser;
 
 @Service
 @RequiredArgsConstructor
-@Primary
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
