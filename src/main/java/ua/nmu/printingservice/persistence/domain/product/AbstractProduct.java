@@ -23,6 +23,7 @@ public abstract class AbstractProduct {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
+    private String description;
     private BigDecimal width;
     private BigDecimal height;
     private BigDecimal basePrice;

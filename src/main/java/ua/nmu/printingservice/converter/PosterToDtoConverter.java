@@ -2,17 +2,17 @@ package ua.nmu.printingservice.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import ua.nmu.printingservice.dto.IndoorPosterDto;
-import ua.nmu.printingservice.persistence.domain.product.IndoorPoster;
+import ua.nmu.printingservice.dto.PosterDto;
+import ua.nmu.printingservice.persistence.domain.product.AbstractPoster;
 
 import static org.apache.commons.text.WordUtils.capitalizeFully;
 
 @Component
-public class IndoorPosterToDtoConverter implements Converter<IndoorPoster, IndoorPosterDto> {
+public class PosterToDtoConverter implements Converter<AbstractPoster, PosterDto> {
     @Override
-    public IndoorPosterDto convert(IndoorPoster indoorPoster) {
+    public PosterDto convert(AbstractPoster indoorPoster) {
         var material = indoorPoster.getMaterial();
-        return IndoorPosterDto.builder()
+        return PosterDto.builder()
                 .id(indoorPoster.getId())
                 .description(indoorPoster.getDescription())
                 .height(indoorPoster.getHeight())

@@ -287,3 +287,32 @@ databaseChangeLog:
               - column:
                   name: description
                   value: Coca-cola poster (138x100cm)
+
+  - changeSet:
+      id: populate_stickers
+      author: Oleksii Mutianov
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c178
+              - column:
+                  name: width
+                  value: 5
+              - column:
+                  name: height
+                  value: 5
+              - column:
+                  name: base_price
+                  value: 10
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c178
+              - column:
+                  name: dtype
+                  value: Sticker
+              - column:
+                  name: description
+                  value: Star Wars II sticker (5x5cm)

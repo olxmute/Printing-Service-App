@@ -25,7 +25,4 @@ public abstract class AbstractPoster extends AbstractProduct {
     @Enumerated(EnumType.STRING)
     private Orientation orientation;
 
-    private String description;
-
-
 }
