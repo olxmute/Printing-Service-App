@@ -1,0 +1,289 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate_materials
+      author: Oleksii Mutianov
+      changes:
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c171
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: STANDART
+              - column:
+                  name: type_name
+                  value: Classic gloss coated
+              - column:
+                  name: price_multiplier
+                  value: 0
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c172
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: STANDART
+              - column:
+                  name: type_name
+                  value: Classic matt coated
+              - column:
+                  name: price_multiplier
+                  value: 0
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c173
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: STANDART
+              - column:
+                  name: type_name
+                  value: Brilliant White uncoated
+              - column:
+                  name: price_multiplier
+                  value: 0.1
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c174
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: DELUXE
+              - column:
+                  name: type_name
+                  value: Woodstock birch
+              - column:
+                  name: price_multiplier
+                  value: 0.2
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c175
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: DELUXE
+              - column:
+                  name: type_name
+                  value: Turner orange peel texture
+              - column:
+                  name: price_multiplier
+                  value: 0.2
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c176
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: DELUXE
+              - column:
+                  name: type_name
+                  value: Soft white felt marked
+              - column:
+                  name: price_multiplier
+                  value: 0.34
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c177
+              - column:
+                  name: dtype
+                  value: PosterMaterial
+              - column:
+                  name: paper_quality
+                  value: PREMUIM
+              - column:
+                  name: type_name
+                  value: Pearl paper
+              - column:
+                  name: price_multiplier
+                  value: 0.5
+        - insert:
+            tableName: materials
+            columns:
+              - column:
+                  name: id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c178
+              - column:
+                  name: dtype
+                  value: StickerMaterial
+              - column:
+                  name: paper_quality
+                  value: STANDART
+              - column:
+                  name: type_name
+                  value: Gloss lamination
+              - column:
+                  name: price_multiplier
+                  value: 0
+
+  - changeSet:
+      id: populate_posters
+      author: Oleksii Mutianov
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: 6c0cb008-399b-4231-8134-afb575ad2340
+              - column:
+                  name: width
+                  value: 15
+              - column:
+                  name: height
+                  value: 25
+              - column:
+                  name: base_price
+                  value: 50
+              - column:
+                  name: orientation
+                  value: PORTRAIT
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c171
+              - column:
+                  name: dtype
+                  value: IndoorPoster
+              - column:
+                  name: description
+                  value: Star Wars II poster (15x25cm)
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: 6c0cb008-399b-4231-8134-afb575ad2341
+              - column:
+                  name: width
+                  value: 10
+              - column:
+                  name: height
+                  value: 15
+              - column:
+                  name: base_price
+                  value: 30
+              - column:
+                  name: orientation
+                  value: PORTRAIT
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c173
+              - column:
+                  name: dtype
+                  value: IndoorPoster
+              - column:
+                  name: description
+                  value: Rocky poster (10x15cm)
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: 6c0cb008-399b-4231-8134-afb575ad2342
+              - column:
+                  name: width
+                  value: 10
+              - column:
+                  name: height
+                  value: 15
+              - column:
+                  name: base_price
+                  value: 30
+              - column:
+                  name: orientation
+                  value: PORTRAIT
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c173
+              - column:
+                  name: dtype
+                  value: IndoorPoster
+              - column:
+                  name: description
+                  value: Braveheart poster (10x15cm)
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: 6c0cb008-399b-4231-8134-afb575ad2343
+              - column:
+                  name: width
+                  value: 25
+              - column:
+                  name: height
+                  value: 30
+              - column:
+                  name: base_price
+                  value: 50
+              - column:
+                  name: orientation
+                  value: PORTRAIT
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c175
+              - column:
+                  name: dtype
+                  value: IndoorPoster
+              - column:
+                  name: description
+                  value: The Lord of the Rings poster (10x15cm)
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  value: 6c0cb008-399b-4231-8134-afb575ad2344
+              - column:
+                  name: width
+                  value: 138
+              - column:
+                  name: height
+                  value: 100
+              - column:
+                  name: base_price
+                  value: 100
+              - column:
+                  name: orientation
+                  value: LANDSCAPE
+              - column:
+                  name: material_id
+                  value: d0dc720e-fe8c-4bd2-984b-effa5863c177
+              - column:
+                  name: dtype
+                  value: OutdoorPoster
+              - column:
+                  name: description
+                  value: Coca-cola poster (138x100cm)

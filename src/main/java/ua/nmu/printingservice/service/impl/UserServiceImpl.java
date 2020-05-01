@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.UserDto;
 import ua.nmu.printingservice.persistence.domain.User;
-import ua.nmu.printingservice.persistence.domain.UserRole;
+import ua.nmu.printingservice.persistence.domain.enums.UserRole;
 import ua.nmu.printingservice.persistence.repository.UserRepository;
 import ua.nmu.printingservice.service.UserService;
 
