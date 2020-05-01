@@ -1,4 +1,4 @@
-package ua.nmu.printingservice.persistence.domain;
+package ua.nmu.printingservice.persistence.domain.enums;
 
 public enum UserRole {
     USER,
