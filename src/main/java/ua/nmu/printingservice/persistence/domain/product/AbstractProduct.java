@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -23,9 +22,7 @@ public abstract class AbstractProduct {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
-    @Lob
-    private byte[] image;
-    // TODO: persist image format
+    private Image image;
     private String description;
     private BigDecimal width;
     private BigDecimal height;

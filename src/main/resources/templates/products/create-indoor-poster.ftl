@@ -6,11 +6,10 @@
 
     <@spring.bind "productWriteDto" />
     <form method="post" enctype="multipart/form-data">
-
         <div>
             <label>Description: </label>
             <@spring.formInput
-            "productWriteDto.description" "placeholder='Description'" "text"/>
+            "productWriteDto.description" "placeholder='Description'"/>
         </div>
         <div>
             <label>Width: </label>
@@ -26,6 +25,16 @@
             <label>Base price: </label>
             <@spring.formInput
             "productWriteDto.basePrice" "placeholder='Base price'"/>
+        </div>
+        <div>
+            <label>Orientation: </label>
+            <@spring.formSingleSelect
+            "productWriteDto.orientation" orientations/>
+        </div>
+        <div>
+            <label>Material: </label>
+            <@spring.formSingleSelect
+            "productWriteDto.materialId" materials/>
         </div>
         <div>
             <label>File: </label>

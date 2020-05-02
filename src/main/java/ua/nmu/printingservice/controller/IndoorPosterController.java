@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.nmu.printingservice.dto.ProductWriteDto;
+import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.service.IndoorPosterService;
+import ua.nmu.printingservice.service.PosterMaterialService;
 
 @Controller
 @RequestMapping("indoor-posters")
@@ -16,6 +18,7 @@ import ua.nmu.printingservice.service.IndoorPosterService;
 public class IndoorPosterController {
 
     private final IndoorPosterService indoorPosterService;
+    private final PosterMaterialService posterMaterialService;
 
     @GetMapping("list")
     public String getIndoorPosters(Model model) {
@@ -25,6 +28,8 @@ public class IndoorPosterController {
 
     @GetMapping("add")
     public String getCreatePosterPage(Model model) {
+        model.addAttribute("materials", posterMaterialService.getMaterialsMap());
+        model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", new ProductWriteDto());
         return "/products/create-indoor-poster";
     }

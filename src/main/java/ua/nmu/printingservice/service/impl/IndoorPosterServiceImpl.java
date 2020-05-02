@@ -4,6 +4,8 @@ import lombok.SneakyThrows;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.ProductWriteDto;
+import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
+import ua.nmu.printingservice.persistence.domain.product.Image;
 import ua.nmu.printingservice.persistence.domain.product.IndoorPoster;
 import ua.nmu.printingservice.persistence.repository.IndoorPosterRepository;
 import ua.nmu.printingservice.service.IndoorPosterService;
@@ -18,15 +20,17 @@ public class IndoorPosterServiceImpl extends AbstractPosterService<IndoorPoster>
 
     @SneakyThrows
     @Override
-    public void save(ProductWriteDto productReadDto) {
+    public void save(ProductWriteDto productWriteDto) {
         IndoorPoster indoorPoster = new IndoorPoster();
-        // TODO: persist image format
-        indoorPoster.setImage(productReadDto.getFile().getBytes());
-        indoorPoster.setBasePrice(productReadDto.getBasePrice());
-        indoorPoster.setDescription(productReadDto.getDescription());
-        indoorPoster.setHeight(productReadDto.getHeight());
-        indoorPoster.setWidth(productReadDto.getWidth());
-        // TODO: finish saving flow
+        var file = productWriteDto.getFile();
+
+        indoorPoster.setImage(new Image(file.getBytes(), file.getContentType()));
+        indoorPoster.setBasePrice(productWriteDto.getBasePrice());
+        indoorPoster.setDescription(productWriteDto.getDescription());
+        indoorPoster.setHeight(productWriteDto.getHeight());
+        indoorPoster.setWidth(productWriteDto.getWidth());
+        indoorPoster.setOrientation(productWriteDto.getOrientation());
+        indoorPoster.setMaterial(new PosterMaterial(productWriteDto.getMaterialId()));
 
         repository.save(indoorPoster);
     }

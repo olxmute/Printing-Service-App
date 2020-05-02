@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
+import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 
 import java.math.BigDecimal;
 
@@ -17,9 +18,8 @@ public class ProductWriteDto {
     private BigDecimal width;
     private BigDecimal height;
     private String description;
-    private String materialName;
-    private String paperQuality;
-    private String orientation;
+    private String materialId;
+    private Orientation orientation;
     private BigDecimal basePrice;
     private MultipartFile file;
 }
