@@ -6,6 +6,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.ProductReadDto;
 import ua.nmu.printingservice.dto.ProductWriteDto;
+import ua.nmu.printingservice.exeptions.PosterNotFoundException;
 import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.PosterRepository;
@@ -50,9 +51,16 @@ public class PosterServiceImpl implements PosterService {
 
     @Override
     public ProductWriteDto finByIdForUpdate(String id) {
-        //                                                  TODO: throw PosterNotFoundException
-        Poster poster = posterRepository.findById(id).orElse(new Poster());
-        return conversionService.convert(poster, ProductWriteDto.class);
+        return conversionService.convert(getById(id), ProductWriteDto.class);
+    }
+
+    @Override
+    public void deleteById(String id) {
+        posterRepository.delete(getById(id));
+    }
+
+    private Poster getById(String id) {
+        return posterRepository.findById(id).orElseThrow(PosterNotFoundException::new);
     }
 
 }
