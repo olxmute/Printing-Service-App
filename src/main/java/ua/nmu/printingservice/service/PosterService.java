@@ -1,9 +1,9 @@
 package ua.nmu.printingservice.service;
 
-import ua.nmu.printingservice.dto.PosterDto;
+import ua.nmu.printingservice.dto.ProductReadDto;
 
 import java.util.List;
 
 public interface PosterService {
-    List<PosterDto> findAll();
+    List<ProductReadDto> findAll();
 }

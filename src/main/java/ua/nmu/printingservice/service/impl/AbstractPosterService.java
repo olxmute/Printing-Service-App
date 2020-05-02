@@ -3,7 +3,7 @@ package ua.nmu.printingservice.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.jpa.repository.JpaRepository;
-import ua.nmu.printingservice.dto.PosterDto;
+import ua.nmu.printingservice.dto.ProductReadDto;
 import ua.nmu.printingservice.persistence.domain.product.AbstractPoster;
 import ua.nmu.printingservice.service.PosterService;
 
@@ -18,10 +18,10 @@ public abstract class AbstractPosterService<T extends AbstractPoster> implements
     protected final JpaRepository<T, String> repository;
 
     @Override
-    public List<PosterDto> findAll() {
+    public List<ProductReadDto> findAll() {
         return repository.findAll()
                 .stream()
-                .map(indoorPoster -> conversionService.convert(indoorPoster, PosterDto.class))
+                .map(indoorPoster -> conversionService.convert(indoorPoster, ProductReadDto.class))
                 .collect(toList());
     }
 

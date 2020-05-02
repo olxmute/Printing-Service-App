@@ -12,6 +12,7 @@
             <div>Height: ${poster.height}</div>
             <div>Width: ${poster.width}</div>
             <div>Price: ${poster.totalPrice}</div>
+            <div><img src="${poster.image}" alt="no image :("></div>
             <br>
         </#list>
     </div>

@@ -4,27 +4,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ua.nmu.printingservice.service.IndoorPosterService;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ua.nmu.printingservice.service.OutdoorPosterService;
 
 @Controller
+@RequestMapping("outdoor-posters")
 @RequiredArgsConstructor
-public class PosterController {
+public class OutdoorPosterController {
 
-    private final IndoorPosterService indoorPosterService;
     private final OutdoorPosterService outdoorPosterService;
 
-    @GetMapping("indoor-posters")
-    public String getIndoorPosters(Model model) {
-        model.addAttribute("indoorPosters", indoorPosterService.findAll());
-
-        return "/products/indoor-poster-list";
-    }
-
-    @GetMapping("outdoor-posters")
+    @GetMapping("list")
     public String getOutdoorPosters(Model model) {
         model.addAttribute("outdoorPosters", outdoorPosterService.findAll());
-
         return "/products/outdoor-poster-list";
     }
 
