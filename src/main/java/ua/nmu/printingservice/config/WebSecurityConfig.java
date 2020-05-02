@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/images/*", "/css/*").permitAll()
-                .antMatchers("/", "/registration", "/indoor-posters", "/outdoor-posters", "/stickers").permitAll() // all endpoints for unauthenticated users
+                .antMatchers("/", "/registration", "/posters/list", "/stickers/list").permitAll() // all endpoints for unauthenticated users
 
                 .anyRequest()
                 .authenticated()

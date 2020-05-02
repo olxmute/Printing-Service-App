@@ -3,12 +3,12 @@ package ua.nmu.printingservice.converter;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import ua.nmu.printingservice.dto.ProductWriteDto;
-import ua.nmu.printingservice.persistence.domain.product.AbstractPoster;
+import ua.nmu.printingservice.persistence.domain.product.Poster;
 
 @Component
-public class PosterToWriteDtoConverter implements Converter<AbstractPoster, ProductWriteDto> {
+public class PosterToWriteDtoConverter implements Converter<Poster, ProductWriteDto> {
     @Override
-    public ProductWriteDto convert(AbstractPoster poster) {
+    public ProductWriteDto convert(Poster poster) {
         return ProductWriteDto.builder()
                 .id(poster.getId())
                 .basePrice(poster.getBasePrice())

@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.persistence.domain.enums.Orientation;
-import ua.nmu.printingservice.service.IndoorPosterService;
 import ua.nmu.printingservice.service.PosterMaterialService;
+import ua.nmu.printingservice.service.PosterService;
 
 @Controller
-@RequestMapping("indoor-posters")
+@RequestMapping("posters")
 @RequiredArgsConstructor
-public class IndoorPosterController {
+public class PosterController {
 
-    private final IndoorPosterService indoorPosterService;
+    private final PosterService posterService;
     private final PosterMaterialService posterMaterialService;
 
     @GetMapping("list")
-    public String getIndoorPosters(Model model) {
-        model.addAttribute("indoorPosters", indoorPosterService.findAll());
-        return "/products/indoor-poster-list";
+    public String getPosters(Model model) {
+        model.addAttribute("posters", posterService.findAll());
+        return "/products/poster-list";
     }
 
     @GetMapping("add")
@@ -32,20 +32,20 @@ public class IndoorPosterController {
         model.addAttribute("materials", posterMaterialService.getMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", new ProductWriteDto());
-        return "/products/write-indoor-poster";
+        return "/products/write-poster";
     }
 
     @PostMapping("write")
     public String createPoster(@ModelAttribute ProductWriteDto productWriteDto) {
-        indoorPosterService.save(productWriteDto);
-        return "redirect:/indoor-posters/list";
+        posterService.save(productWriteDto);
+        return "redirect:/posters/list";
     }
 
     @GetMapping("update")
     public String getUpdatePage(@RequestParam String id, Model model) {
         model.addAttribute("materials", posterMaterialService.getMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
-        model.addAttribute("productWriteDto", indoorPosterService.finByIdForUpdate(id));
-        return "/products/write-indoor-poster";
+        model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
+        return "/products/write-poster";
     }
 }

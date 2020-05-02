@@ -1,11 +1,11 @@
 <#include "../parts/main-template.ftl">
-<@main "Indoor posters"/>
+<@main "Posters"/>
 
 <#macro content>
 
     <a href="add">Add poster</a>
     <div>
-        <#list indoorPosters as poster>
+        <#list posters as poster>
             <div><strong>${poster.description}</strong></div>
             <div>Material: ${poster.materialName}</div>
             <div>Paper quality: ${poster.paperQuality}</div>
