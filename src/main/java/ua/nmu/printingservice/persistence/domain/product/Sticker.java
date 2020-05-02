@@ -6,6 +6,7 @@ import lombok.ToString;
 import ua.nmu.printingservice.persistence.domain.material.StickerMaterial;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,7 +15,7 @@ import javax.persistence.ManyToOne;
 @ToString(callSuper = true)
 public class Sticker extends AbstractProduct {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private StickerMaterial material;
 
 }

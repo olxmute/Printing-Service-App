@@ -9,6 +9,7 @@ import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Data
@@ -17,8 +18,9 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Poster extends AbstractProduct {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private PosterMaterial material;
+
     @Enumerated(EnumType.STRING)
     private Orientation orientation;
 
