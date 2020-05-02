@@ -1,11 +1,14 @@
 <#include "../parts/main-template.ftl">
 <#import "/spring.ftl" as spring />
-<@main "Login"/>
+<@main "Poster"/>
 
 <#macro content>
 
+    <a href="list">< Back</a>
     <@spring.bind "productWriteDto" />
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="/indoor-posters/write">
+        <@spring.formHiddenInput "productWriteDto.id"/>
+
         <div>
             <label>Description: </label>
             <@spring.formInput
@@ -37,13 +40,15 @@
             "productWriteDto.materialId" materials/>
         </div>
         <div>
-            <label>File: </label>
-            <@spring.formInput
-            "productWriteDto.file" "name='file'" "file"/>
+            <label>Image: </label>
+            <img src="${productWriteDto.image!}" id="image-holder" alt="no image :(">
+            <input id="fileInput" type="file" onchange="encode()"/>
+            <@spring.formHiddenInput "productWriteDto.image"/>
         </div>
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Create</button>
+        <button type="submit">Save</button>
     </form>
 
+    <script src="/scripts/posterWriteScripts.js"></script>
 </#macro>

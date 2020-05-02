@@ -6,4 +6,6 @@ public interface IndoorPosterService extends PosterService {
 
     void save(ProductWriteDto productReadDto);
 
+    ProductWriteDto finByIdForUpdate(String id);
+
 }
