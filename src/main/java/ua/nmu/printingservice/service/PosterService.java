@@ -13,4 +13,6 @@ public interface PosterService {
 
     ProductWriteDto finByIdForUpdate(String id);
 
+    void deleteById(String id);
+
 }

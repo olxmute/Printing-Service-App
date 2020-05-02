@@ -48,4 +48,11 @@ public class PosterController {
         model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
         return "/products/write-poster";
     }
+
+    // TODO: replace with POST
+    @GetMapping("delete")
+    public String getUpdatePage(@RequestParam String id) {
+        posterService.deleteById(id);
+        return "redirect:/posters/list";
+    }
 }

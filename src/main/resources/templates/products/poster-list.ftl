@@ -14,7 +14,7 @@
             <div>Width: ${poster.width}</div>
             <div>Price: ${poster.totalPrice}</div>
             <div><img src="${poster.image!}" alt="no image :("></div>
-            <div><a href="update?id=${poster.id}">Edit</a></div>
+            <div><a href="update?id=${poster.id}">Edit</a> <a href="delete?id=${poster.id}">Delete</a></div>
             <br>
         </#list>
     </div>
