@@ -1,5 +1,3 @@
-<#include "main-template.ftl">
-
 <#assign authorized = Session.SPRING_SECURITY_CONTEXT??>
 
 <#if authorized>

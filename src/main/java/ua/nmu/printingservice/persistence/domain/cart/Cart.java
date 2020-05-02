@@ -33,6 +33,13 @@ public class Cart extends BaseEntity {
         items.add(item);
     }
 
+    public int getItemsCount() {
+        return items.stream()
+                .map(CartItem::getCount)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
     public BigDecimal getTotalPrice() {
         return items.stream()
                 .map(cartItem -> cartItem.getProduct().getTotalPrice().multiply(BigDecimal.valueOf(cartItem.getCount())))

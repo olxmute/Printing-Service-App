@@ -1,3 +1,4 @@
+<#include "security.ftl"/>
 <#macro main title>
     <!DOCTYPE html>
     <html lang="en">
@@ -8,6 +9,12 @@
     </head>
 
     <body>
+
+    <header>
+        <#if user??>
+            <div>Cart (${cartItemsCount})</div>
+        </#if>
+    </header>
 
     <main>
         <@content/>

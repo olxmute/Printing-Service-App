@@ -1,4 +1,4 @@
-<#include "../parts/secured-main-template.ftl">
+<#include "../parts/main-template.ftl">
 <@main "Hello"/>
 
 <#macro content>

@@ -19,7 +19,9 @@
                 <input value="${poster.id}" name="productId" type="hidden">
                 <input name="count" type="number" value="1">
                 <button type="submit">Add to cart</button>
-                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <#if user??>
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                </#if>
             </form>
             <br>
         </#list>
