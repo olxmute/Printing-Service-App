@@ -175,7 +175,7 @@ databaseChangeLog:
                   value: d0dc720e-fe8c-4bd2-984b-effa5863c171
               - column:
                   name: dtype
-                  value: IndoorPoster
+                  value: Poster
               - column:
                   name: description
                   value: Star Wars II poster (15x25cm)
@@ -202,7 +202,7 @@ databaseChangeLog:
                   value: d0dc720e-fe8c-4bd2-984b-effa5863c173
               - column:
                   name: dtype
-                  value: IndoorPoster
+                  value: Poster
               - column:
                   name: description
                   value: Rocky poster (10x15cm)
@@ -229,7 +229,7 @@ databaseChangeLog:
                   value: d0dc720e-fe8c-4bd2-984b-effa5863c173
               - column:
                   name: dtype
-                  value: IndoorPoster
+                  value: Poster
               - column:
                   name: description
                   value: Braveheart poster (10x15cm)
@@ -256,7 +256,7 @@ databaseChangeLog:
                   value: d0dc720e-fe8c-4bd2-984b-effa5863c175
               - column:
                   name: dtype
-                  value: IndoorPoster
+                  value: Poster
               - column:
                   name: description
                   value: The Lord of the Rings poster (10x15cm)
@@ -283,7 +283,7 @@ databaseChangeLog:
                   value: d0dc720e-fe8c-4bd2-984b-effa5863c177
               - column:
                   name: dtype
-                  value: OutdoorPoster
+                  value: Poster
               - column:
                   name: description
                   value: Coca-cola poster (138x100cm)

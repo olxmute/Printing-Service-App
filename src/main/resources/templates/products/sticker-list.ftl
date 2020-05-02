@@ -1,5 +1,5 @@
 <#include "../parts/main-template.ftl">
-<@main "Indoor posters"/>
+<@main "Stickers"/>
 
 <#macro content>
 

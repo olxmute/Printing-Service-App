@@ -6,7 +6,7 @@
 
     <a href="list">< Back</a>
     <@spring.bind "productWriteDto" />
-    <form method="post" enctype="multipart/form-data" action="/indoor-posters/write">
+    <form method="post" enctype="multipart/form-data" action="/posters/write">
         <@spring.formHiddenInput "productWriteDto.id"/>
 
         <div>
