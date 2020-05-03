@@ -1,6 +1,7 @@
 package ua.nmu.printingservice.service;
 
 import ua.nmu.printingservice.dto.CartDto;
+import ua.nmu.printingservice.dto.ProductWriteDto;
 
 public interface CartService {
 
@@ -11,5 +12,7 @@ public interface CartService {
     void changeItemCountInCart(String itemId, Integer count);
 
     CartDto findByUserId(String userId);
+
+    void addUserPosterToCart(ProductWriteDto productWriteDto, Integer count, String userId);
 
 }

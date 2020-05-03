@@ -23,7 +23,6 @@ public class CartToDtoConverter implements Converter<Cart, CartDto> {
     public CartDto convert(Cart cart) {
         var cartItems = cart.getItems()
                 .stream()
-                .sorted((o1, o2) -> o2.getCreatedDate().compareTo(o1.getCreatedDate()))
                 .map(this::convertProduct)
                 .collect(toList());
 

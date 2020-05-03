@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.CartDto;
+import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.exeptions.ProductNotFoundException;
+import ua.nmu.printingservice.persistence.domain.User;
 import ua.nmu.printingservice.persistence.domain.cart.CartItem;
+import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.CartItemRepository;
 import ua.nmu.printingservice.persistence.repository.CartRepository;
 import ua.nmu.printingservice.persistence.repository.ProductRepository;
@@ -68,4 +71,17 @@ public class CartServiceImpl implements CartService {
         }
     }
 
+    @Override
+    @Transactional
+    public void addUserPosterToCart(ProductWriteDto productWriteDto, Integer count, String userId) {
+        var user = new User();
+        user.setId(userId);
+
+        var poster = conversionService.convert(productWriteDto, Poster.class);
+        poster.setUser(user);
+
+        var savedPoster = productRepository.save(poster);
+
+        addProductToCart(savedPoster.getId(), count, userId);
+    }
 }
