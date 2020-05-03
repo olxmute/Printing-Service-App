@@ -16,14 +16,14 @@ import ua.nmu.printingservice.service.CartService;
 import ua.nmu.printingservice.service.PosterMaterialService;
 
 @Controller
-@RequestMapping("user-poster")
+@RequestMapping("user-product")
 @RequiredArgsConstructor
-public class UserPosterController {
+public class UserProductController {
 
     private final CartService cartService;
     private final PosterMaterialService posterMaterialService;
 
-    @GetMapping
+    @GetMapping("poster")
     public String getCreateUserPosterPage(Model model) {
         model.addAttribute("materials", posterMaterialService.getMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
@@ -32,10 +32,10 @@ public class UserPosterController {
     }
 
     @PostMapping
-    public String addUserPosterToCart(@ModelAttribute ProductWriteDto productWriteDto,
-                                      @RequestParam Integer count,
-                                      @AuthenticationPrincipal SecurityUser user) {
+    public String addUserProductToCart(@ModelAttribute ProductWriteDto productWriteDto,
+                                       @RequestParam Integer count,
+                                       @AuthenticationPrincipal SecurityUser user) {
         cartService.addUserPosterToCart(productWriteDto, count, user.getId());
-        return "redirect:/posters/list";
+        return "redirect:/cart";
     }
 }

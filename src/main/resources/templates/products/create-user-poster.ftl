@@ -6,7 +6,7 @@
 
     <a href="/posters/list">< Discard</a>
     <@spring.bind "productWriteDto" />
-    <form method="post" enctype="multipart/form-data" action="/user-poster" onchange="recalculatePrice()">
+    <form method="post" enctype="multipart/form-data" action="/user-product" onchange="recalculatePrice()">
         <@spring.formHiddenInput "productWriteDto.id"/>
         <@spring.formHiddenInput "productWriteDto.basePrice" "placeholder='Base price'"/>
 
@@ -16,12 +16,18 @@
             "productWriteDto.description" "placeholder='Description'"/>
         </div>
         <div>
-            <label>Width: </label>
-            <@spring.formInput "productWriteDto.width" "placeholder='Width'" "number"/>
+            <label>
+                Width:
+                <@spring.formInput "productWriteDto.width" "placeholder='Width'" "number"/>
+                cm
+            </label>
         </div>
         <div>
-            <label>Height: </label>
-            <@spring.formInput "productWriteDto.height" "placeholder='Height'" "number"/>
+            <label>
+                Height:
+                <@spring.formInput "productWriteDto.height" "placeholder='Height'" "number"/>
+                cm
+            </label>
         </div>
         <div>
             <label>Orientation: </label>

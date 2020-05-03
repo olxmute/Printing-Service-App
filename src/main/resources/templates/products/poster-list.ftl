@@ -4,7 +4,7 @@
 <#macro content>
 
     <div><a href="/posters/add">Add poster</a></div>
-    <div><a href="/user-poster">Create my own poster</a></div>
+    <div><a href="/user-product/poster">Create my own poster</a></div>
     <div>
         <#list posters as poster>
             <div><strong>${poster.description}</strong></div>

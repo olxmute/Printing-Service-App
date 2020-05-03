@@ -13,7 +13,7 @@ window.onload = function () {
 
     xhr.onload = function () {
         materialPriceMultipliers = JSON.parse(xhr.responseText);
-    }
+    };
 };
 
 function recalculatePrice() {
@@ -26,10 +26,10 @@ function recalculatePrice() {
         const select = document.getElementById("materialId");
         const selectedValue = select.options[select.selectedIndex].value;
 
-        let basePrice = width * height * 0.01;
+        const basePrice = width * height * 0.01;
         basePriceElem.value = basePrice.toFixed(2);
 
-        let multiplier = materialPriceMultipliers[selectedValue];
+        const multiplier = materialPriceMultipliers[selectedValue];
         priceElem.innerHTML = ((basePrice + (basePrice * multiplier)) * count).toFixed(2);
     }
 

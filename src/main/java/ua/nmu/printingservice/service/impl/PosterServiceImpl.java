@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.ProductReadDto;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.exeptions.ProductNotFoundException;
-import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.PosterRepository;
 import ua.nmu.printingservice.service.PosterService;
@@ -34,16 +33,7 @@ public class PosterServiceImpl implements PosterService {
 
     @Override
     public void save(ProductWriteDto productWriteDto) {
-        Poster poster = posterRepository.findById(productWriteDto.getId()).orElse(new Poster());
-
-        poster.setBasePrice(productWriteDto.getBasePrice());
-        poster.setDescription(productWriteDto.getDescription());
-        poster.setHeight(productWriteDto.getHeight());
-        poster.setWidth(productWriteDto.getWidth());
-        poster.setOrientation(productWriteDto.getOrientation());
-        poster.setMaterial(new PosterMaterial(productWriteDto.getMaterialId()));
-        poster.setImage(productWriteDto.getImage());
-
+        var poster = conversionService.convert(productWriteDto, Poster.class);
         posterRepository.save(poster);
     }
 
