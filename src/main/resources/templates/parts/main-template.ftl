@@ -12,7 +12,7 @@
 
     <header>
         <#if user??>
-            <div>Cart (${cartItemsCount})</div>
+            <div><a href="/cart">Cart (${cartItemsCount})</a></div>
         </#if>
     </header>
 

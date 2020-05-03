@@ -6,16 +6,20 @@ import lombok.ToString;
 import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import static ua.nmu.printingservice.persistence.domain.enums.ProductType.Constants.POSTER_VALUE;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Entity
+@DiscriminatorValue(POSTER_VALUE)
 public class Poster extends AbstractProduct {
 
     @ManyToOne(fetch = FetchType.LAZY)

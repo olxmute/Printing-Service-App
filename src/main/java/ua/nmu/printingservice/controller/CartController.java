@@ -3,6 +3,8 @@ package ua.nmu.printingservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,12 @@ import ua.nmu.printingservice.service.CartService;
 public class CartController {
 
     private final CartService cartService;
+
+    @GetMapping
+    public String getCart(@AuthenticationPrincipal SecurityUser user, Model model) {
+        model.addAttribute("cart", cartService.findByUserId(user.getId()));
+        return "/cart/cart-view";
+    }
 
     @PostMapping("product")
     public String addToCart(@RequestParam String productId,

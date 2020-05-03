@@ -19,11 +19,13 @@ public class CartInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
-        var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!"anonymousUser".equals(principal)) {
-            SecurityUser user = (SecurityUser) principal;
-            int itemsCount = cartRepository.findByUser_Id(user.getId()).getItemsCount();
-            modelAndView.addObject("cartItemsCount", itemsCount);
+        if (modelAndView != null) {
+            var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (!"anonymousUser".equals(principal)) {
+                SecurityUser user = (SecurityUser) principal;
+                int itemsCount = cartRepository.findByUser_Id(user.getId()).getItemsCount();
+                modelAndView.addObject("cartItemsCount", itemsCount);
+            }
         }
     }
 }
