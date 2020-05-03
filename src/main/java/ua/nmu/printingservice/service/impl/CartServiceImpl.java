@@ -4,8 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.CartDto;
+import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.exeptions.ProductNotFoundException;
+import ua.nmu.printingservice.persistence.domain.User;
 import ua.nmu.printingservice.persistence.domain.cart.CartItem;
+import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
+import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.CartItemRepository;
 import ua.nmu.printingservice.persistence.repository.CartRepository;
 import ua.nmu.printingservice.persistence.repository.ProductRepository;
@@ -18,6 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
 
+    //    protected final PosterRepository posterRepository;
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
@@ -68,4 +73,24 @@ public class CartServiceImpl implements CartService {
         }
     }
 
+    @Override
+    @Transactional
+    public void addUserPosterToCart(ProductWriteDto productWriteDto, Integer count, String userId) {
+        User user = new User();
+        user.setId(userId);
+
+        Poster poster = new Poster();
+        poster.setBasePrice(productWriteDto.getBasePrice());
+        poster.setDescription(productWriteDto.getDescription());
+        poster.setHeight(productWriteDto.getHeight());
+        poster.setWidth(productWriteDto.getWidth());
+        poster.setOrientation(productWriteDto.getOrientation());
+        poster.setMaterial(new PosterMaterial(productWriteDto.getMaterialId()));
+        poster.setImage(productWriteDto.getImage());
+        poster.setUser(user);
+
+        var savedPoster = productRepository.save(poster);
+
+        addProductToCart(savedPoster.getId(), count, userId);
+    }
 }

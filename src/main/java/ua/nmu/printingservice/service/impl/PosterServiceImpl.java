@@ -1,8 +1,8 @@
 package ua.nmu.printingservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.ProductReadDto;
 import ua.nmu.printingservice.dto.ProductWriteDto;
@@ -12,7 +12,6 @@ import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.PosterRepository;
 import ua.nmu.printingservice.service.PosterService;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -26,14 +25,13 @@ public class PosterServiceImpl implements PosterService {
 
     @Override
     public List<ProductReadDto> findAll() {
-        return posterRepository.findAll()
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        return posterRepository.findAllByUserNull(sort)
                 .stream()
                 .map(poster -> conversionService.convert(poster, ProductReadDto.class))
                 .collect(toList());
     }
 
-    @Transactional(rollbackOn = Throwable.class)
-    @SneakyThrows
     @Override
     public void save(ProductWriteDto productWriteDto) {
         Poster poster = posterRepository.findById(productWriteDto.getId()).orElse(new Poster());
