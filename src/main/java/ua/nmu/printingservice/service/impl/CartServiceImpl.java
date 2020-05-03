@@ -24,6 +24,12 @@ public class CartServiceImpl implements CartService {
     private final ConversionService conversionService;
 
     @Override
+    public CartDto findByUserId(String userId) {
+        var cart = cartRepository.findByUser_Id(userId);
+        return conversionService.convert(cart, CartDto.class);
+    }
+
+    @Override
     @Transactional
     public void addProductToCart(String productId, Integer count, String userId) {
         var product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
@@ -60,13 +66,6 @@ public class CartServiceImpl implements CartService {
             cartItem.setCount(count);
             cartItemRepository.save(cartItem);
         }
-    }
-
-    @Override
-    @Transactional
-    public CartDto findByUserId(String userId) {
-        var cart = cartRepository.findByUser_Id(userId);
-        return conversionService.convert(cart, CartDto.class);
     }
 
 }
