@@ -2,9 +2,13 @@ package ua.nmu.printingservice.persistence.domain.product;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import ua.nmu.printingservice.persistence.domain.enums.ProductType;
 import ua.nmu.printingservice.persistence.domain.material.AbstractMaterial;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -29,6 +33,10 @@ public abstract class AbstractProduct {
     private BigDecimal width;
     private BigDecimal height;
     private BigDecimal basePrice;
+
+    @Enumerated(EnumType.STRING)
+    @Column(insertable = false, updatable = false)
+    private ProductType dtype;
 
     public abstract AbstractMaterial getMaterial();
 

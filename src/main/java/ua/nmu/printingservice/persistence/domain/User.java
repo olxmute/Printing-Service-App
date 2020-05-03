@@ -1,9 +1,10 @@
 package ua.nmu.printingservice.persistence.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import ua.nmu.printingservice.persistence.domain.enums.UserRole;
 
@@ -18,10 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
-public class User {
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "uuid")
