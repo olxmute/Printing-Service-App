@@ -2,11 +2,13 @@ package ua.nmu.printingservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.CartDto;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.exeptions.ProductNotFoundException;
 import ua.nmu.printingservice.persistence.domain.User;
+import ua.nmu.printingservice.persistence.domain.cart.Cart;
 import ua.nmu.printingservice.persistence.domain.cart.CartItem;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.repository.CartItemRepository;
@@ -15,7 +17,10 @@ import ua.nmu.printingservice.persistence.repository.ProductRepository;
 import ua.nmu.printingservice.service.CartService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +32,13 @@ public class CartServiceImpl implements CartService {
     private final ConversionService conversionService;
 
     @Override
+    public Cart findActiveByUserId(String userId) {
+        return cartRepository.findByActiveAndUser_Id(true, userId);
+    }
+
+    @Override
     public CartDto findByUserId(String userId) {
-        var cart = cartRepository.findByUser_Id(userId);
+        var cart = findActiveByUserId(userId);
         return conversionService.convert(cart, CartDto.class);
     }
 
@@ -36,7 +46,7 @@ public class CartServiceImpl implements CartService {
     @Transactional
     public void addProductToCart(String productId, Integer count, String userId) {
         var product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
-        var cart = cartRepository.findByUser_Id(userId);
+        var cart = findActiveByUserId(userId);
 
         Optional<CartItem> optionalCartItem = cart.getItems()
                 .stream()
@@ -74,14 +84,32 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void addUserPosterToCart(ProductWriteDto productWriteDto, Integer count, String userId) {
-        var user = new User();
-        user.setId(userId);
-
         var poster = conversionService.convert(productWriteDto, Poster.class);
-        poster.setUser(user);
+        poster.setUser(new User(userId));
 
         var savedPoster = productRepository.save(poster);
 
         addProductToCart(savedPoster.getId(), count, userId);
     }
+
+    @Override
+    @Transactional
+    public void submitOrder(String userId) {
+        var cart = findActiveByUserId(userId);
+        cart.setActive(false);
+
+        var newCart = new Cart();
+        newCart.setUser(new User(userId));
+        cartRepository.saveAll(List.of(cart, newCart));
+    }
+
+    @Override
+    public List<CartDto> findAllInactiveByUserId(String userId) {
+        var sort = Sort.by(Sort.Direction.DESC, "createdDate");
+        return cartRepository.findAllByActiveAndUser_Id(false, userId, sort)
+                .stream()
+                .map(cart -> conversionService.convert(cart, CartDto.class))
+                .collect(toList());
+    }
+
 }

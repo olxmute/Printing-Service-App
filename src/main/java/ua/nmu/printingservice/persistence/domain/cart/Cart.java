@@ -31,6 +31,8 @@ public class Cart extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
+    private boolean active = true;
+
     public void addItem(CartItem item) {
         items.add(item);
     }

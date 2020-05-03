@@ -13,6 +13,7 @@
     <header>
         <#if user??>
             <div><a href="/cart">Cart (${cartItemsCount})</a></div>
+            <div><a href="/order-history">My order history</a></div>
         </#if>
     </header>
 
