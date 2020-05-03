@@ -25,7 +25,7 @@ public class PosterServiceImpl implements PosterService {
     @Override
     public List<ProductReadDto> findAll() {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
-        return posterRepository.findAllByUserNull(sort)
+        return posterRepository.findAllByActiveAndUserNull(true, sort)
                 .stream()
                 .map(poster -> conversionService.convert(poster, ProductReadDto.class))
                 .collect(toList());

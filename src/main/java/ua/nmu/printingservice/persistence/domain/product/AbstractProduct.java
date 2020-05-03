@@ -1,5 +1,6 @@
 package ua.nmu.printingservice.persistence.domain.product;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,8 @@ public abstract class AbstractProduct extends BaseEntity {
     private BigDecimal width;
     private BigDecimal height;
     private BigDecimal basePrice;
+    @Builder.Default
+    private boolean active = true;
 
     @Enumerated(EnumType.STRING)
     @Column(insertable = false, updatable = false)
