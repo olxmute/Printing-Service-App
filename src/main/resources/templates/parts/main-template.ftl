@@ -1,4 +1,4 @@
-<#include "security.ftl"/>
+<#include "../security/security.ftl"/>
 <#macro main title>
     <!DOCTYPE html>
     <html lang="en">
