@@ -25,6 +25,12 @@ public class CartController {
         return "/cart/cart-view";
     }
 
+    @PostMapping
+    public String submitOrder(@AuthenticationPrincipal SecurityUser user) {
+        cartService.submitOrder(user.getId());
+        return "redirect:/posters/list";
+    }
+
     @PostMapping("product")
     public String addToCart(@RequestParam String productId,
                             @RequestParam Integer count,

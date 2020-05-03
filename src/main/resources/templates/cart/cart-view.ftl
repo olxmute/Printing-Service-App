@@ -37,5 +37,11 @@
     </div>
     <div><strong>Total items: ${cart.totalItemsCount}</strong></div>
     <div><strong>Total price: ${cart.totalPrice}</strong></div>
+    <div>
+        <form action="/cart" method="post">
+            <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+            <button type="submit">Submit order</button>
+        </form>
+    </div>
 
 </#macro>
