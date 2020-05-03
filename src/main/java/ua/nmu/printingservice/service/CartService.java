@@ -8,6 +8,8 @@ public interface CartService {
 
     void removeProductFromCart(String itemId);
 
+    void changeItemCountInCart(String itemId, Integer count);
+
     CartDto findByUserId(String userId);
 
 }

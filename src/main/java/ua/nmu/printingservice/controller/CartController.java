@@ -41,4 +41,12 @@ public class CartController {
         return "redirect:" + redirect;
     }
 
+    @PostMapping("product/count")
+    public String changeItemCountCart(@RequestParam String itemId,
+                                      @RequestParam Integer count,
+                                      @RequestHeader("Referer") String redirect) {
+        cartService.changeItemCountInCart(itemId, count);
+        return "redirect:" + redirect;
+    }
+
 }

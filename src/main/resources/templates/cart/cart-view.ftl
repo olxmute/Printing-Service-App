@@ -16,20 +16,22 @@
             <div>Width: ${item.product.width}</div>
             <div>Price: ${item.product.totalPrice}</div>
             <div><img src="${item.product.image!}" alt="no image :("></div>
-            <div>Product count in cart: ${item.productCount}</div>
+            <div>
+                Product count in cart:
+                <form action="/cart/product/count" method="post">
+                    <input name="itemId" value="${item.id}" type="hidden">
+                    <input name="count" value="${item.productCount}" type="number">
+                    <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                    <button type="submit">Change count</button>
+                </form>
+            </div>
             <div>
                 <form action="/cart/product/delete" method="post">
-                    <input type="hidden" name="itemId" value="${item.id}">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <input name="itemId" value="${item.id}" type="hidden">
+                    <input name="_csrf" value="${_csrf.token}" type="hidden"/>
                     <button type="submit">Delete from cart</button>
                 </form>
             </div>
-        <#--            <form action="/cart/product" method="post">-->
-        <#--                <input value="${item.product.id}" name="productId" type="hidden">-->
-        <#--                <input name="count" type="number" value="1">-->
-        <#--                <button type="submit">Add to cart</button>-->
-        <#--                <input type="hidden" name="_csrf" value="${_csrf.token}"/>-->
-        <#--            </form>-->
             <br>
         </#list>
     </div>
