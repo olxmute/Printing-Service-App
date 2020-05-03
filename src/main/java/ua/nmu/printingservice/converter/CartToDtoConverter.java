@@ -43,6 +43,7 @@ public class CartToDtoConverter implements Converter<Cart, CartDto> {
         };
 
         return CartItemDto.builder()
+                .id(cartItem.getId())
                 .productCount(cartItem.getCount())
                 .product(productReadDto)
                 .build();

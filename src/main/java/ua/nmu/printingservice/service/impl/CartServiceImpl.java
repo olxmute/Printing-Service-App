@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ua.nmu.printingservice.dto.CartDto;
 import ua.nmu.printingservice.exeptions.ProductNotFoundException;
 import ua.nmu.printingservice.persistence.domain.cart.CartItem;
+import ua.nmu.printingservice.persistence.repository.CartItemRepository;
 import ua.nmu.printingservice.persistence.repository.CartRepository;
 import ua.nmu.printingservice.persistence.repository.ProductRepository;
 import ua.nmu.printingservice.service.CartService;
@@ -19,6 +20,7 @@ public class CartServiceImpl implements CartService {
 
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
     private final ConversionService conversionService;
 
     @Override
@@ -41,6 +43,12 @@ public class CartServiceImpl implements CartService {
         }
 
         cartRepository.save(cart);
+    }
+
+    @Override
+    public void removeProductFromCart(String itemId) {
+        var cartItem = cartItemRepository.findById(itemId).orElseThrow(ProductNotFoundException::new);
+        cartItemRepository.delete(cartItem);
     }
 
     @Override

@@ -34,4 +34,11 @@ public class CartController {
         return "redirect:" + redirect;
     }
 
+    @PostMapping("product/delete")
+    public String removeFromCart(@RequestParam String itemId,
+                                 @RequestHeader("Referer") String redirect) {
+        cartService.removeProductFromCart(itemId);
+        return "redirect:" + redirect;
+    }
+
 }
