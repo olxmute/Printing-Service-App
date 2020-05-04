@@ -15,7 +15,15 @@
             <div>Width: ${poster.width}</div>
             <div>Price: ${poster.totalPrice}</div>
             <div><img src="${poster.image!}" alt="no image :("></div>
-            <div><a href="update?id=${poster.id}">Edit</a> <a href="delete?id=${poster.id}">Delete</a></div>
+            <div>
+                <a href="update?id=${poster.id}">Edit</a>
+
+                <form action="/posters/delete" method="post">
+                    <input value="${poster.id}" name="id" type="hidden">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
             <form action="/cart/product" method="post">
                 <input value="${poster.id}" name="productId" type="hidden">
                 <input name="count" type="number" value="1">

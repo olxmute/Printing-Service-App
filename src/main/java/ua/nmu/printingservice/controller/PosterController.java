@@ -49,9 +49,8 @@ public class PosterController {
         return "/products/write-poster";
     }
 
-    // TODO: replace with POST
-    @GetMapping("delete")
-    public String getUpdatePage(@RequestParam String id) {
+    @PostMapping("delete")
+    public String deleteById(@RequestParam String id) {
         posterService.deleteById(id);
         return "redirect:/posters/list";
     }
