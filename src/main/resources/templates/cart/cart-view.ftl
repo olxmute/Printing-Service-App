@@ -3,7 +3,7 @@
 
 <#macro content>
 
-    <a href="/posters/list">Continue shopping</a>
+    <a href="/home">Continue shopping</a>
     <div>
         <#list cart.items as item>
             <div><strong>${item.product.description}</strong></div>
