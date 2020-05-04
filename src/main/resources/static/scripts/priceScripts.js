@@ -8,7 +8,12 @@ let materialPriceMultipliers;
 
 window.onload = function () {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/materials', true);
+    const title = document.title;
+    if (title === 'Poster') {
+        xhr.open('GET', '/materials/poster', true);
+    } else {
+        xhr.open('GET', '/materials/sticker', true);
+    }
     xhr.send();
 
     xhr.onload = function () {
