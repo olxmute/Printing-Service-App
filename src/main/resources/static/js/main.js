@@ -1,12 +1,3 @@
-/*  ---------------------------------------------------
-    Template Name: Fashi
-    Description: Fashi eCommerce HTML Template
-    Author: Colorlib
-    Author URI: https://colorlib.com/
-    Version: 1.0
-    Created: Colorlib
----------------------------------------------------------  */
-
 'use strict';
 
 (function ($) {
@@ -229,8 +220,8 @@
 		Quantity change
 	--------------------- */
     var proQty = $('.pro-qty');
-	proQty.prepend('<span class="dec qtybtn">-</span>');
-	proQty.append('<span class="inc qtybtn">+</span>');
+	// proQty.prepend('<span class="dec qtybtn">-</span>');
+	// proQty.append('<span class="inc qtybtn">+</span>');
 	proQty.on('click', '.qtybtn', function () {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();

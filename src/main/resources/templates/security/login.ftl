@@ -13,7 +13,8 @@
 
                             <div>
                                 <div class="group-input">
-                                    <label for="username">Username or email address *</label>
+                                    <label for="username">Email address *</label>
+                                    <#-- TODO: type="email"-->
                                     <input type="text" id="username" name="username">
                                 </div>
                                 <div class="group-input">
