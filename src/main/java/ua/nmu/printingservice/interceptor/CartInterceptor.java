@@ -26,6 +26,9 @@ public class CartInterceptor extends HandlerInterceptorAdapter {
                 var cart = cartRepository.findByActiveAndUser_Id(true, user.getId());
                 modelAndView.addObject("itemsCount", cart.getItemsCount());
                 modelAndView.addObject("totalPrice", cart.getTotalPrice());
+            } else {
+                modelAndView.addObject("itemsCount", 0);
+                modelAndView.addObject("totalPrice", 0);
             }
         }
     }

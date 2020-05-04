@@ -86,7 +86,7 @@
                                                         <span class="dec qtybtn">-</span>
                                                         <input type="text" value="1" name="count"
                                                                class="add-to-cart-count">
-                                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                                        <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
                                                         <span class="inc qtybtn">+</span>
                                                     </li>
                                                     <li class="w-icon active">
@@ -131,7 +131,7 @@
 
                 <form action="/posters/delete" method="post">
                     <input value="${poster.id}" name="id" type="hidden">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
                     <button type="submit">Delete</button>
                 </form>
             </div>
@@ -139,9 +139,7 @@
                 <input value="${poster.id}" name="productId" type="hidden">
                 <input name="count" type="number" value="1">
                 <button type="submit">Add to cart</button>
-                <#if user??>
-                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                </#if>
+                <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
             </form>
             <br>
         </#list>

@@ -69,7 +69,7 @@
                         <div class="logo">
                             <a href="/home">
                                 <#-- TODO: logo-->
-                                <img src="img/logo.png" alt="">
+                                <img src="/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
