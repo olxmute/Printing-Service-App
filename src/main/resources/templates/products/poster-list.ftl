@@ -13,8 +13,8 @@
             <div>Orientation: ${poster.orientation}</div>
             <div>Height: ${poster.height}</div>
             <div>Width: ${poster.width}</div>
-            <div>Price: ${poster.totalPrice}</div>
             <div><img src="${poster.image!}" alt="no image :("></div>
+            <div>Price: ${poster.totalPrice}</div>
             <div>
                 <a href="update?id=${poster.id}">Edit</a>
 

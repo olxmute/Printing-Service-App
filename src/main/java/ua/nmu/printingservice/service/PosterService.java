@@ -1,13 +1,8 @@
 package ua.nmu.printingservice.service;
 
-import ua.nmu.printingservice.dto.ProductReadDto;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 
-import java.util.List;
-
-public interface PosterService {
-
-    List<ProductReadDto> findAll();
+public interface PosterService extends ProductService {
 
     void save(ProductWriteDto productReadDto);
 

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.persistence.domain.enums.Orientation;
-import ua.nmu.printingservice.service.PosterMaterialService;
+import ua.nmu.printingservice.persistence.domain.enums.ProductType;
+import ua.nmu.printingservice.service.MaterialService;
 import ua.nmu.printingservice.service.PosterService;
 
 @Controller
@@ -19,7 +20,7 @@ import ua.nmu.printingservice.service.PosterService;
 public class PosterController {
 
     private final PosterService posterService;
-    private final PosterMaterialService posterMaterialService;
+    private final MaterialService materialService;
 
     @GetMapping("list")
     public String getPosters(Model model) {
@@ -29,9 +30,10 @@ public class PosterController {
 
     @GetMapping("add")
     public String getCreatePosterPage(Model model) {
-        model.addAttribute("materials", posterMaterialService.getMaterialsMap());
+        model.addAttribute("materials", materialService.getPosterMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", new ProductWriteDto());
+        model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/write-poster";
     }
 
@@ -43,9 +45,10 @@ public class PosterController {
 
     @GetMapping("update")
     public String getUpdatePage(@RequestParam String id, Model model) {
-        model.addAttribute("materials", posterMaterialService.getMaterialsMap());
+        model.addAttribute("materials", materialService.getPosterMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
+        model.addAttribute("productType", ProductType.STICKER.getValue());
         return "/products/write-poster";
     }
 
