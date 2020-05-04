@@ -3,33 +3,46 @@
 
 <#macro content>
 
-    <form action="/login" method="post">
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="login-form">
+                        <h2>Login</h2>
+                        <form action="/login" method="post">
 
-        <div>
-            <h2>
-                Log-in to your account
-            </h2>
-            <div>
-                <input type="text" name="username" placeholder="Username" autocomplete="off">
+                            <div>
+                                <div class="group-input">
+                                    <label for="username">Username or email address *</label>
+                                    <input type="text" id="username" name="username">
+                                </div>
+                                <div class="group-input">
+                                    <label for="pass">Password *</label>
+                                    <input id="pass" type="password" name="password">
+                                </div>
+                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                <button type="submit" class="site-btn login-btn">Sign In</button>
+                            </div>
+
+                            <#--TODO: process these guys -->
+                            <#if RequestParameters.error??>
+                                <div>
+                                    <p>Invalid username and password.</p>
+                                </div>
+                            </#if>
+                            <#if RequestParameters.logout??>
+                                <div>
+                                    <p>You have been logout.</p>
+                                </div>
+                            </#if>
+
+                        </form>
+                        <div class="switch-login">
+                            <a href="/registration" class="or-login">Or Create An Account</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <input type="password" name="password" placeholder="Password">
-            </div>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Login</button>
         </div>
-
-        <#if RequestParameters.error??>
-            <div>
-                <p>Invalid username and password.</p>
-            </div>
-        </#if>
-        <#if RequestParameters.logout??>
-            <div>
-                <p>You have been logout.</p>
-            </div>
-        </#if>
-
-    </form>
-
+    </div>
 </#macro>
