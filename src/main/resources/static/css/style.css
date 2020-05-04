@@ -1153,6 +1153,11 @@ ol {
 
 .product-item {
 	margin-bottom: 26px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	padding-bottom: 26px;
 }
 
 .product-item:hover .pi-pic .icon {
@@ -1210,6 +1215,7 @@ ol {
 	transition: all 0.3s;
 	text-align: center;
 	width: 100%;
+	height: 46px;
 }
 
 .product-item .pi-pic ul li {
@@ -1218,7 +1224,7 @@ ol {
 	background: #ffffff;
 }
 
-.product-item .pi-pic ul li.w-icon.active a {
+.product-item .pi-pic ul li.w-icon.active button {
 	background: #e7ab3c;
 	color: #ffffff;
 }
@@ -1233,7 +1239,6 @@ ol {
 
 .product-item .pi-text {
 	text-align: center;
-	padding-top: 26px;
 }
 
 .product-item .pi-text .catagory-name {
@@ -1243,6 +1248,12 @@ ol {
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
+}
+
+.product-item .pi-text .material-name {
+	padding-top: 5px;
+	font-size: 13px;
+	color: #5c5c5c;
 }
 
 .product-item .pi-text a {
@@ -2698,7 +2709,7 @@ ol {
 	width: 16%;
 }
 
-.cart-table table tr td.qua-col .quantity {
+.quantity {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2707,7 +2718,7 @@ ol {
 	justify-content: center;
 }
 
-.cart-table table tr td.qua-col .pro-qty {
+.quantity .pro-qty {
 	width: 123px;
 	height: 46px;
 	border: 2px solid #ebebeb;
@@ -2715,7 +2726,7 @@ ol {
 	float: left;
 }
 
-.cart-table table tr td.qua-col .pro-qty .qtybtn {
+.quantity .pro-qty .qtybtn {
 	font-size: 24px;
 	color: #b2b2b2;
 	float: left;
@@ -2724,11 +2735,11 @@ ol {
 	width: 18px;
 }
 
-.cart-table table tr td.qua-col .pro-qty .qtybtn.dec {
+.quantity .pro-qty .qtybtn.dec {
 	font-size: 30px;
 }
 
-.cart-table table tr td.qua-col .pro-qty input {
+.quantity .pro-qty input {
 	text-align: center;
 	width: 52px;
 	font-size: 14px;
@@ -3897,9 +3908,12 @@ ol {
 	.inner-header .advanced-search .input-group button {
 		right: -14px;
 	}
-	.product-item .pi-pic ul li a {
-		padding: 16px 12px 12px 11px;
+
+	.product-item .pi-pic ul li button {
+		padding: 12px 12px 12px 11px;
+		border: none;
 	}
+
 	.nav-item .nav-menu li a {
 		padding: 16px 45px 15px;
 	}
