@@ -4,9 +4,15 @@
 
 <#macro content>
 
-    <a href="list">< Back</a>
+<#--    <a href="list">< Back</a>-->
     <@spring.bind "productWriteDto" />
-    <form method="post" enctype="multipart/form-data" action="/posters/write">
+    <form method="post" enctype="multipart/form-data"
+            <#if productType = 'POSTER'>
+                action="/posters/write"
+            <#else>
+                action="/stickers/write"
+            </#if>
+    >
         <@spring.formHiddenInput "productWriteDto.id"/>
 
         <div>
@@ -29,11 +35,13 @@
             <@spring.formInput
             "productWriteDto.basePrice" "placeholder='Base price'"/>
         </div>
-        <div>
-            <label>Orientation: </label>
-            <@spring.formSingleSelect
-            "productWriteDto.orientation" orientations/>
-        </div>
+        <#if productType = 'POSTER'>
+            <div>
+                <label>Orientation: </label>
+                <@spring.formSingleSelect
+                "productWriteDto.orientation" orientations/>
+            </div>
+        </#if>
         <div>
             <label>Material: </label>
             <@spring.formSingleSelect

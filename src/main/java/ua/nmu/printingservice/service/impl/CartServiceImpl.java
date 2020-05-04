@@ -10,7 +10,7 @@ import ua.nmu.printingservice.exeptions.ProductNotFoundException;
 import ua.nmu.printingservice.persistence.domain.User;
 import ua.nmu.printingservice.persistence.domain.cart.Cart;
 import ua.nmu.printingservice.persistence.domain.cart.CartItem;
-import ua.nmu.printingservice.persistence.domain.product.Poster;
+import ua.nmu.printingservice.persistence.domain.product.AbstractProduct;
 import ua.nmu.printingservice.persistence.repository.CartItemRepository;
 import ua.nmu.printingservice.persistence.repository.CartRepository;
 import ua.nmu.printingservice.persistence.repository.ProductRepository;
@@ -83,11 +83,12 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public void addUserPosterToCart(ProductWriteDto productWriteDto, Integer count, String userId) {
-        var poster = conversionService.convert(productWriteDto, Poster.class);
-        poster.setUser(new User(userId));
+    public <T extends AbstractProduct> void addUserProductToCart(ProductWriteDto productWriteDto, Integer count,
+                                                                 String userId, Class<T> productClass) {
+        var product = conversionService.convert(productWriteDto, productClass);
+        product.setUser(new User(userId));
 
-        var savedPoster = productRepository.save(poster);
+        var savedPoster = productRepository.save(product);
 
         addProductToCart(savedPoster.getId(), count, userId);
     }

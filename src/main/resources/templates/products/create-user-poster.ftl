@@ -1,19 +1,28 @@
 <#include "../parts/main-template.ftl">
 <#import "/spring.ftl" as spring />
-<@main "Poster"/>
+<#if productType = 'POSTER'>
+    <@main "Poster"/>
+<#else>
+    <@main "Sticker"/>
+</#if>
 
 <#macro content>
 
-    <a href="/posters/list">< Discard</a>
+<#--    <a href="/posters/list">< Discard</a>-->
     <@spring.bind "productWriteDto" />
-    <form method="post" enctype="multipart/form-data" action="/user-product" onchange="recalculatePrice()">
+    <form method="post" enctype="multipart/form-data" onchange="recalculatePrice()"
+            <#if productType = 'POSTER'>
+                action="/user-product/poster"
+            <#else>
+                action="/user-product/sticker"
+            </#if>
+    >
         <@spring.formHiddenInput "productWriteDto.id"/>
         <@spring.formHiddenInput "productWriteDto.basePrice" "placeholder='Base price'"/>
 
         <div>
             <label>Description: </label>
-            <@spring.formInput
-            "productWriteDto.description" "placeholder='Description'"/>
+            <@spring.formInput "productWriteDto.description" "placeholder='Description'"/>
         </div>
         <div>
             <label>
@@ -29,10 +38,12 @@
                 cm
             </label>
         </div>
-        <div>
-            <label>Orientation: </label>
-            <@spring.formSingleSelect "productWriteDto.orientation" orientations/>
-        </div>
+        <#if productType = 'POSTER'>
+            <div>
+                <label>Orientation: </label>
+                <@spring.formSingleSelect "productWriteDto.orientation" orientations/>
+            </div>
+        </#if>
         <div>
             <label>Material: </label>
             <@spring.formSingleSelect "productWriteDto.materialId" materials/>

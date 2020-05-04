@@ -20,6 +20,7 @@ public class StickerToDtoConverter implements Converter<Sticker, ProductReadDto>
                 .totalPrice(sticker.getTotalPrice())
                 .materialName(material.getTypeName())
                 .paperQuality(capitalizeFully(material.getPaperQuality().name()))
+                .image(sticker.getImage())
                 .build();
     }
 }
