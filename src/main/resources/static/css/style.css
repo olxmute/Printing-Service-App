@@ -1237,6 +1237,10 @@ ol {
 	padding: 16px 18px 12px 19px;
 }
 
+.product-item .pi-pic .icon a {
+	color: black;
+}
+
 .product-item .pi-text {
 	text-align: center;
 }

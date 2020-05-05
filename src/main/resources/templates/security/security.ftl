@@ -4,7 +4,7 @@
     <#assign
     user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
     name = user.getFirstName() + " " + user.getLastName()
-    isAdmin = true
+    isAdmin = user.isAdmin()
     >
 <#else>
     <#assign

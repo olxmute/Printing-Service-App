@@ -17,6 +17,7 @@ public class SecurityUser implements UserDetails {
     private final String username;
     private final String password;
     private final Collection<GrantedAuthority> authorities;
+    private boolean admin;
 
     @Override
     public boolean isAccountNonExpired() {

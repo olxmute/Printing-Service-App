@@ -2,9 +2,6 @@
 <@main "Posters"/>
 
 <#macro content>
-    <div><a href="/posters/add">Add poster</a></div>
-    <div><a href="/user-product/poster">Create my own poster</a></div>
-
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
@@ -79,6 +76,16 @@
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <img src="${poster.image!}" alt="">
+                                            <#if isAdmin>
+                                                <div class="icon">
+                                                    <a href="update?id=${poster.id}">
+                                                        <i class="icon_pencil-edit_alt"></i>
+                                                    </a>
+                                                    <a href="/posters/delete?id=${poster.id}">
+                                                        <i class="icon_close_alt"></i>
+                                                    </a>
+                                                </div>
+                                            </#if>
                                             <form action="/cart/product" method="post">
                                                 <ul class="quantity">
                                                     <li class="pro-qty">
@@ -86,7 +93,9 @@
                                                         <span class="dec qtybtn">-</span>
                                                         <input type="text" value="1" name="count"
                                                                class="add-to-cart-count">
-                                                        <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
+                                                        <#if user??>
+                                                            <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
+                                                        </#if>
                                                         <span class="inc qtybtn">+</span>
                                                     </li>
                                                     <li class="w-icon active">
@@ -116,34 +125,9 @@
     </section>
     <!-- Product Shop Section End -->
 
-    <div>
-        <#list posters as poster>
-            <div><strong>${poster.description}</strong></div>
-            <div>Material: ${poster.materialName}</div>
-            <div>Paper quality: ${poster.paperQuality}</div>
-            <div>Orientation: ${poster.orientation}</div>
-            <div>Height: ${poster.height}</div>
-            <div>Width: ${poster.width}</div>
-            <div><img src="${poster.image!}" alt="no image :("></div>
-            <div>Price: ${poster.totalPrice}</div>
-            <div>
-                <a href="update?id=${poster.id}">Edit</a>
+    <div><a href="/posters/add">Add poster</a></div>
+    <div><a href="/user-product/poster">Create my own poster</a></div>
 
-                <form action="/posters/delete" method="post">
-                    <input value="${poster.id}" name="id" type="hidden">
-                    <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
-            <form action="/cart/product" method="post">
-                <input value="${poster.id}" name="productId" type="hidden">
-                <input name="count" type="number" value="1">
-                <button type="submit">Add to cart</button>
-                <input type="hidden" name="_csrf" value="${_csrf.token!}"/>
-            </form>
-            <br>
-        </#list>
-    </div>
     <script src="/scripts/posterListScripts.js"></script>
 
 </#macro>

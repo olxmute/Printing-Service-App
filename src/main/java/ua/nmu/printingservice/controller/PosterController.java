@@ -52,7 +52,7 @@ public class PosterController {
         return "/products/write-poster";
     }
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public String deleteById(@RequestParam String id) {
         posterService.deleteById(id);
         return "redirect:/posters/list";
