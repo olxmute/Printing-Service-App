@@ -48,7 +48,7 @@ public class PosterController {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
-        model.addAttribute("productType", ProductType.STICKER.getValue());
+        model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/write-poster";
     }
 

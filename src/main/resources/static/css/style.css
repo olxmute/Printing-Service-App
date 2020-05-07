@@ -969,6 +969,10 @@ ol {
 	padding: 80px 50px;
 }
 
+.banner-section .row {
+	justify-content: center;
+}
+
 .single-banner {
 	position: relative;
 	z-index: 1;
@@ -1152,7 +1156,6 @@ ol {
 }
 
 .product-item {
-	margin-bottom: 26px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1238,7 +1241,7 @@ ol {
 }
 
 .product-item .pi-pic .icon a {
-	color: black;
+	color: white;
 }
 
 .product-item .pi-text {
@@ -1252,6 +1255,7 @@ ol {
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .product-item .pi-text .material-name {
