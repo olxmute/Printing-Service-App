@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/img/*", "/css/*", "/fonts/*", "/scripts/*", "/js/*").permitAll()
+                .antMatchers("/img/**", "/css/*", "/fonts/*", "/scripts/*", "/js/*").permitAll()
                 .antMatchers("/", "/home", "/registration", "/posters/list", "/stickers/list").permitAll() // all endpoints for unauthenticated users
 
                 .anyRequest()
