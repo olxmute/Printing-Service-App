@@ -24,8 +24,9 @@ public class PosterController {
 
     @GetMapping("list")
     public String getPosters(Model model) {
-        model.addAttribute("posters", posterService.findAll());
-        return "/products/poster-list";
+        model.addAttribute("products", posterService.findAll());
+        model.addAttribute("productType", ProductType.POSTER.getValue());
+        return "/products/product-list";
     }
 
     @GetMapping("add")

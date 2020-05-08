@@ -1,5 +1,10 @@
 <#include "../parts/main-template.ftl">
-<@main "Posters"/>
+
+<#if productType = 'POSTER'>
+    <@main "Posters"/>
+<#else>
+    <@main "Stickers"/>
+</#if>
 
 <#macro content>
     <!-- Breadcrumb Section Begin -->
@@ -25,27 +30,25 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">
-                            <li><a href="#">Posters</a></li>
-                            <li><a href="#">Stickers</a></li>
+                            <li>
+                                <a href="/posters/list">
+                                    <#if productType = 'POSTER'>
+                                        <strong>> Posters</strong>
+                                    <#else>
+                                        Posters
+                                    </#if>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/stickers/list">
+                                    <#if productType = 'STICKER'>
+                                        <strong>> Stickers</strong>
+                                    <#else>
+                                        Stickers
+                                    </#if>
+                                </a>
+                            </li>
                         </ul>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Price</h4>
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="filter-btn">Filter</a>
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Tags</h4>
@@ -61,27 +64,25 @@
                     </div>
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
-                    <#--                    <div class="product-show-option">-->
-                    <#--                        <div class="row">-->
-                    <#--                            <div class="col-lg-7 col-md-7"></div>-->
-                    <#--                            <div class="col-lg-5 col-md-5 text-right">-->
-                    <#--                                <p>Shown ${posters?size} Of ${posters?size} Product</p>-->
-                    <#--                            </div>-->
-                    <#--                        </div>-->
-                    <#--                    </div>-->
                     <div class="product-list">
                         <div class="row">
-                            <#list posters as poster>
+                            <#list products as product>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="product-item">
                                         <div class="pi-pic">
-                                            <img src="${poster.image!}" alt="">
+                                            <img src="${product.image!}" alt="">
                                             <#if isAdmin>
                                                 <div class="icon">
-                                                    <a href="update?id=${poster.id}">
+                                                    <a href="update?id=${product.id}">
                                                         <i class="icon_pencil-edit_alt"></i>
                                                     </a>
-                                                    <a href="/posters/delete?id=${poster.id}">
+                                                    <a
+                                                            <#if productType = 'POSTER'>
+                                                                href="/posters/delete?id=${product.id}"
+                                                            <#else>
+                                                                href="/stickers/delete?id=${product.id}"
+                                                            </#if>
+                                                    >
                                                         <i class="icon_close_alt"></i>
                                                     </a>
                                                 </div>
@@ -89,7 +90,7 @@
                                             <form action="/cart/product" method="post">
                                                 <ul class="quantity">
                                                     <li class="pro-qty">
-                                                        <input value="${poster.id}" name="productId" type="hidden">
+                                                        <input value="${product.id}" name="productId" type="hidden">
                                                         <span class="dec qtybtn">-</span>
                                                         <input type="text" value="1" name="count"
                                                                class="add-to-cart-count">
@@ -108,11 +109,16 @@
                                         </div>
                                         <div class="pi-text">
                                             <div class="catagory-name">
-                                                Poster (${poster.height} x ${poster.width}cm)
+                                                <#if productType = 'POSTER'>
+                                                    Poster
+                                                <#else>
+                                                    Sticker
+                                                </#if>
+                                                (${product.height} x ${product.width}cm)
                                             </div>
-                                            <h5>${poster.description}</h5>
-                                            <h6 class="material-name">${poster.materialName}</h6>
-                                            <div class="product-price">$${poster.totalPrice}</div>
+                                            <h5>${product.description}</h5>
+                                            <h6 class="material-name">${product.materialName}</h6>
+                                            <div class="product-price">$${product.totalPrice}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -125,8 +131,13 @@
     </section>
     <!-- Product Shop Section End -->
 
-    <div><a href="/posters/add">Add poster</a></div>
-    <div><a href="/user-product/poster">Create my own poster</a></div>
+    <#if productType = 'POSTER'>
+        <div><a href="/posters/add">Add poster</a></div>
+        <div><a href="/user-product/poster">Create my own poster</a></div>
+    <#else>
+        <div><a href="/stickers/add">Add sticker</a></div>
+        <div><a href="/user-product/sticker">Create my own sticker</a></div>
+    </#if>
 
     <script src="/scripts/posterListScripts.js"></script>
 

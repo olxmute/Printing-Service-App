@@ -90,14 +90,14 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="product-slider owl-carousel">
-                        <#list posters as poster>
+                        <#list stickers as sticker>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="${poster.image}" alt="">
+                                    <img src="${sticker.image}" alt="">
                                     <form action="/cart/product" method="post">
                                         <ul class="quantity">
                                             <li class="pro-qty">
-                                                <input value="${poster.id}" name="productId" type="hidden">
+                                                <input value="${sticker.id}" name="productId" type="hidden">
                                                 <span class="dec qtybtn">-</span>
                                                 <input type="text" value="1" name="count"
                                                        class="add-to-cart-count">
@@ -115,12 +115,12 @@
                                     </form>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="catagory-name">Poster (${poster.height} x ${poster.width}cm)</div>
+                                    <div class="catagory-name">Poster (${sticker.height} x ${sticker.width}cm)</div>
                                     <a href="#">
-                                        <h5>${poster.description}</h5>
+                                        <h5>${sticker.description}</h5>
                                     </a>
-                                    <h6 class="material-name">${poster.materialName}</h6>
-                                    <div class="product-price">$${poster.totalPrice}</div>
+                                    <h6 class="material-name">${sticker.materialName}</h6>
+                                    <div class="product-price">$${sticker.totalPrice}</div>
                                 </div>
                             </div>
                         </#list>

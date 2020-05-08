@@ -23,8 +23,9 @@ public class StickerController {
 
     @GetMapping("list")
     public String getStickers(Model model) {
-        model.addAttribute("stickers", stickerService.findAll());
-        return "/products/sticker-list";
+        model.addAttribute("products", stickerService.findAll());
+        model.addAttribute("productType", ProductType.STICKER.getValue());
+        return "/products/product-list";
     }
 
     @GetMapping("add")
@@ -49,7 +50,7 @@ public class StickerController {
         return "/products/write-poster";
     }
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public String deleteById(@RequestParam String id) {
         stickerService.deleteById(id);
         return "redirect:/stickers/list";
