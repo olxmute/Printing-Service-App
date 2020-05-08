@@ -66,7 +66,7 @@
                                 <@spring.formSingleSelect "productWriteDto.materialId" materials "id='material'"/>
                             </div>
                             <div class="col-lg-12">
-                                <label for="base-price">File<span>*</span></label>
+                                <label for="base-price">Image<span>*</span></label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="fileInput"

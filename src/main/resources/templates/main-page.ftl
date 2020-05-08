@@ -69,9 +69,7 @@
                                 </div>
                                 <div class="pi-text">
                                     <div class="catagory-name">Poster (${poster.height} x ${poster.width}cm)</div>
-                                    <a href="#">
-                                        <h5>${poster.description}</h5>
-                                    </a>
+                                    <h5>${poster.description}</h5>
                                     <h6 class="material-name">${poster.materialName}</h6>
                                     <div class="product-price">$${poster.totalPrice}</div>
                                 </div>
@@ -115,10 +113,8 @@
                                     </form>
                                 </div>
                                 <div class="pi-text">
-                                    <div class="catagory-name">Poster (${sticker.height} x ${sticker.width}cm)</div>
-                                    <a href="#">
-                                        <h5>${sticker.description}</h5>
-                                    </a>
+                                    <div class="catagory-name">Sticker (${sticker.height} x ${sticker.width}cm)</div>
+                                    <h5>${sticker.description}</h5>
                                     <h6 class="material-name">${sticker.materialName}</h6>
                                     <div class="product-price">$${sticker.totalPrice}</div>
                                 </div>
@@ -222,4 +218,5 @@
     </section>
     <!-- Benefits Section End -->
 
+    <script src="/scripts/posterListScripts.js"></script>
 </#macro>
