@@ -2894,6 +2894,17 @@ ol {
 	padding-bottom: 80px;
 }
 
+.checkout-section .custom-file-label,
+.checkout-section .custom-file-label::after {
+	padding: .550rem .75rem;
+	height: auto;
+	border-radius: unset;
+}
+
+.custom-file-input:focus~.custom-file-label {
+	border-color: #ebebeb;
+}
+
 .checkout-content {
 	margin-bottom: 50px;
 }
@@ -2929,16 +2940,16 @@ ol {
 	color: #d85d5c;
 }
 
-.checkout-form input {
+.checkout-form input,
+.checkout-form select,
+.checkout-form .custom-file-label {
 	width: 100%;
 	height: 46px;
 	border: 2px solid #ebebeb;
 	margin-bottom: 25px;
 	padding-left: 15px;
-}
-
-.checkout-form input.street-first {
-	margin-bottom: 20px;
+	border-radius: unset;
+	padding-right: 10px;
 }
 
 .checkout-form .create-item {
@@ -3077,11 +3088,13 @@ ol {
 	transform: rotate(127deg);
 }
 
-.checkout-form .place-order .order-total .order-btn {
+.checkout-form .order-btn {
 	text-align: center;
+	width: 100%;
+	margin-top: 50px;
 }
 
-.checkout-form .place-order .order-total .order-btn .place-btn {
+.checkout-form .order-btn .place-btn {
 	padding: 13px 40px 11px;
 	background: #000000;
 	border-color: #000000;

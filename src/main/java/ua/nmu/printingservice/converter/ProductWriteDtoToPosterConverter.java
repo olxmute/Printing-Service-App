@@ -3,6 +3,7 @@ package ua.nmu.printingservice.converter;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import ua.nmu.printingservice.dto.ProductWriteDto;
+import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 
@@ -17,7 +18,7 @@ public class ProductWriteDtoToPosterConverter implements Converter<ProductWriteD
                 .description(dto.getDescription())
                 .height(dto.getHeight())
                 .width(dto.getWidth())
-                .orientation(dto.getOrientation())
+                .orientation(Orientation.PORTRAIT)
                 .material(new PosterMaterial(dto.getMaterialId()))
                 .image(dto.getImage())
                 .build();
