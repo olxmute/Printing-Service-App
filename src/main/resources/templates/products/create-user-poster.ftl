@@ -27,7 +27,7 @@
     <section class="checkout-section spad">
         <div class="container">
             <@spring.bind "productWriteDto" />
-            <form method="post" class="checkout-form" onchange="recalculatePrice()"
+            <form method="post" class="checkout-form" oninput="recalculatePrice()"
                     <#if productType = 'POSTER'>
                         action="/user-product/poster"
                     <#else>

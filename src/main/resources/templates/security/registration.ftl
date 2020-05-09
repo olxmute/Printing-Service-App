@@ -33,10 +33,10 @@
                                 <@spring.formPasswordInput "userDto.password" />
                                 <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <#-- TODO: process this -->
                             <div class="group-input">
                                 <label for="con-pass">Confirm Password <span>*</span></label>
                                 <input type="password" id="con-pass">
+                                <span class="error-holder"></span>
                             </div>
 
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -50,4 +50,5 @@
             </div>
         </div>
     </div>
+    <script src="/scripts/registrationValidation.js"></script>
 </#macro>
