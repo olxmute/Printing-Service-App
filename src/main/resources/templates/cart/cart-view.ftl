@@ -21,6 +21,11 @@
     <!-- Shopping Cart Section Begin -->
     <section class="shopping-cart spad">
         <div class="container">
+            <div class="col-lg-4">
+                <div class="cart-buttons">
+                    <a href="/order-history" class="primary-btn checkout-btn">Show order history</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="cart-table">

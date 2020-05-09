@@ -65,6 +65,29 @@
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-list">
+                        <div class="col-lg-8">
+                            <div class="cart-buttons">
+                                <#if productType = 'POSTER'>
+                                    <#if isAdmin>
+                                        <a href="/posters/add" class="primary-btn checkout-btn">
+                                            Add poster
+                                        </a>
+                                    </#if>
+                                    <a href="/user-product/poster" class="primary-btn checkout-btn">
+                                        Create my own poster
+                                    </a>
+                                <#else>
+                                    <#if isAdmin>
+                                        <a href="/stickers/add" class="primary-btn checkout-btn">
+                                            Add sticker
+                                        </a>
+                                    </#if>
+                                    <a href="/user-product/sticker" class="primary-btn checkout-btn">
+                                        Create my own sticker
+                                    </a>
+                                </#if>
+                            </div>
+                        </div>
                         <div class="row">
                             <#list products as product>
                                 <div class="col-lg-4 col-sm-6">
@@ -130,14 +153,6 @@
         </div>
     </section>
     <!-- Product Shop Section End -->
-
-    <#if productType = 'POSTER'>
-        <div><a href="/posters/add">Add poster</a></div>
-        <div><a href="/user-product/poster">Create my own poster</a></div>
-    <#else>
-        <div><a href="/stickers/add">Add sticker</a></div>
-        <div><a href="/user-product/sticker">Create my own sticker</a></div>
-    </#if>
 
     <script src="/scripts/posterListScripts.js"></script>
 
