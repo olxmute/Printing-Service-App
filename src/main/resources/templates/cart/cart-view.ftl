@@ -54,10 +54,19 @@
                                 <td class="qua-col first-row">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <#-- TODO: change quantity -->
-                                            <span class="dec qtybtn">-</span>
+                                            <form action="/cart/product/count" method="post">
+                                                <input name="itemId" value="${item.id}" type="hidden">
+                                                <input name="count" value="-1" type="hidden">
+                                                <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                                <button type="submit" class="dec qtybtn">-</button>
+                                            </form>
                                             <input type="text" value="${item.productCount}">
-                                            <span class="inc qtybtn">+</span>
+                                            <form action="/cart/product/count" method="post">
+                                                <input name="itemId" value="${item.id}" type="hidden">
+                                                <input name="count" type="hidden" value="1">
+                                                <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                                <button type="submit" class="inc qtybtn">+</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

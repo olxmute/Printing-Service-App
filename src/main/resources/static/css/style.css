@@ -2743,6 +2743,11 @@ ol {
 	width: 18px;
 }
 
+.quantity .pro-qty form .qtybtn {
+	background: transparent;
+	border: none;
+}
+
 .quantity .pro-qty .qtybtn.dec {
 	font-size: 30px;
 }

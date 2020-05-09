@@ -72,13 +72,16 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void changeItemCountInCart(String itemId, Integer count) {
-        if (count == 0) {
+        var cartItem = cartItemRepository.findById(itemId).orElseThrow(ProductNotFoundException::new);
+
+        int totalCount = cartItem.getCount() + count;
+        if (totalCount == 0) {
             removeProductFromCart(itemId);
-        } else {
-            var cartItem = cartItemRepository.findById(itemId).orElseThrow(ProductNotFoundException::new);
-            cartItem.setCount(count);
-            cartItemRepository.save(cartItem);
+            return;
         }
+
+        cartItem.setCount(totalCount);
+        cartItemRepository.save(cartItem);
     }
 
     @Override
