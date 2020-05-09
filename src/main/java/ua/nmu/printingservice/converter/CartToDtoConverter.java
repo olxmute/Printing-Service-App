@@ -10,11 +10,16 @@ import ua.nmu.printingservice.persistence.domain.cart.CartItem;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 import ua.nmu.printingservice.persistence.domain.product.Sticker;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import static java.util.stream.Collectors.toList;
 
 @Component
 @RequiredArgsConstructor
 public class CartToDtoConverter implements Converter<Cart, CartDto> {
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy").localizedBy(Locale.ENGLISH);
 
     private final PosterToDtoConverter posterToDtoConverter;
     private final StickerToDtoConverter stickerToDtoConverter;
@@ -30,6 +35,7 @@ public class CartToDtoConverter implements Converter<Cart, CartDto> {
                 .items(cartItems)
                 .totalItemsCount(cart.getItemsCount())
                 .totalPrice(cart.getTotalPrice())
+                .lastModifiedDate(cart.getLastModifiedDate().format(FORMATTER))
                 .build();
     }
 
