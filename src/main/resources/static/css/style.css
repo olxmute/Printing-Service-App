@@ -969,6 +969,10 @@ ol {
 	padding: 80px 50px;
 }
 
+.banner-section .row {
+	justify-content: center;
+}
+
 .single-banner {
 	position: relative;
 	z-index: 1;
@@ -1152,7 +1156,11 @@ ol {
 }
 
 .product-item {
-	margin-bottom: 26px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	padding-bottom: 26px;
 }
 
 .product-item:hover .pi-pic .icon {
@@ -1210,6 +1218,7 @@ ol {
 	transition: all 0.3s;
 	text-align: center;
 	width: 100%;
+	height: 46px;
 }
 
 .product-item .pi-pic ul li {
@@ -1218,7 +1227,7 @@ ol {
 	background: #ffffff;
 }
 
-.product-item .pi-pic ul li.w-icon.active a {
+.product-item .pi-pic ul li.w-icon.active button {
 	background: #e7ab3c;
 	color: #ffffff;
 }
@@ -1231,9 +1240,12 @@ ol {
 	padding: 16px 18px 12px 19px;
 }
 
+.product-item .pi-pic .icon a {
+	color: white;
+}
+
 .product-item .pi-text {
 	text-align: center;
-	padding-top: 26px;
 }
 
 .product-item .pi-text .catagory-name {
@@ -1243,6 +1255,13 @@ ol {
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.product-item .pi-text .material-name {
+	padding-top: 5px;
+	font-size: 13px;
+	color: #5c5c5c;
 }
 
 .product-item .pi-text a {
@@ -2676,10 +2695,7 @@ ol {
 
 .cart-table table tr td.cart-pic {
 	width: 21%;
-}
-
-.cart-table table tr td.cart-title {
-	text-align: left;
+	padding: 20px;
 }
 
 .cart-table table tr td.cart-title h5 {
@@ -2701,7 +2717,7 @@ ol {
 	width: 16%;
 }
 
-.cart-table table tr td.qua-col .quantity {
+.quantity {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -2710,7 +2726,7 @@ ol {
 	justify-content: center;
 }
 
-.cart-table table tr td.qua-col .pro-qty {
+.quantity .pro-qty {
 	width: 123px;
 	height: 46px;
 	border: 2px solid #ebebeb;
@@ -2718,7 +2734,7 @@ ol {
 	float: left;
 }
 
-.cart-table table tr td.qua-col .pro-qty .qtybtn {
+.quantity .pro-qty .qtybtn {
 	font-size: 24px;
 	color: #b2b2b2;
 	float: left;
@@ -2727,11 +2743,16 @@ ol {
 	width: 18px;
 }
 
-.cart-table table tr td.qua-col .pro-qty .qtybtn.dec {
+.quantity .pro-qty form .qtybtn {
+	background: transparent;
+	border: none;
+}
+
+.quantity .pro-qty .qtybtn.dec {
 	font-size: 30px;
 }
 
-.cart-table table tr td.qua-col .pro-qty input {
+.quantity .pro-qty input {
 	text-align: center;
 	width: 52px;
 	font-size: 14px;
@@ -2750,6 +2771,11 @@ ol {
 	font-size: 16px;
 	color: #252525;
 	width: 8%;
+}
+
+.cart-table table tr td.close-td button {
+	border: none;
+	background: none;
 }
 
 .cart-table table tr td.close-td i {
@@ -2852,6 +2878,8 @@ ol {
 }
 
 .proceed-checkout .proceed-btn {
+	width: 100%;
+	border: none;
 	font-size: 14px;
 	font-weight: 700;
 	color: #ffffff;
@@ -2869,6 +2897,17 @@ ol {
 .checkout-section {
 	padding-top: 80px;
 	padding-bottom: 80px;
+}
+
+.checkout-section .custom-file-label,
+.checkout-section .custom-file-label::after {
+	padding: .550rem .75rem;
+	height: auto;
+	border-radius: unset;
+}
+
+.custom-file-input:focus~.custom-file-label {
+	border-color: #ebebeb;
 }
 
 .checkout-content {
@@ -2906,16 +2945,16 @@ ol {
 	color: #d85d5c;
 }
 
-.checkout-form input {
+.checkout-form input,
+.checkout-form select,
+.checkout-form .custom-file-label {
 	width: 100%;
 	height: 46px;
 	border: 2px solid #ebebeb;
 	margin-bottom: 25px;
 	padding-left: 15px;
-}
-
-.checkout-form input.street-first {
-	margin-bottom: 20px;
+	border-radius: unset;
+	padding-right: 10px;
 }
 
 .checkout-form .create-item {
@@ -3054,11 +3093,13 @@ ol {
 	transform: rotate(127deg);
 }
 
-.checkout-form .place-order .order-total .order-btn {
+.checkout-form .order-btn {
 	text-align: center;
+	width: 100%;
+	margin-top: 50px;
 }
 
-.checkout-form .place-order .order-total .order-btn .place-btn {
+.checkout-form .order-btn .place-btn {
 	padding: 13px 40px 11px;
 	background: #000000;
 	border-color: #000000;
@@ -3893,9 +3934,12 @@ ol {
 	.inner-header .advanced-search .input-group button {
 		right: -14px;
 	}
-	.product-item .pi-pic ul li a {
-		padding: 16px 12px 12px 11px;
+
+	.product-item .pi-pic ul li button {
+		padding: 12px 12px 12px 11px;
+		border: none;
 	}
+
 	.nav-item .nav-menu li a {
 		padding: 16px 45px 15px;
 	}

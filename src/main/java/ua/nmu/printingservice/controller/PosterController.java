@@ -24,8 +24,9 @@ public class PosterController {
 
     @GetMapping("list")
     public String getPosters(Model model) {
-        model.addAttribute("posters", posterService.findAll());
-        return "/products/poster-list";
+        model.addAttribute("products", posterService.findAll());
+        model.addAttribute("productType", ProductType.POSTER.getValue());
+        return "/products/product-list";
     }
 
     @GetMapping("add")
@@ -48,11 +49,11 @@ public class PosterController {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
         model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
-        model.addAttribute("productType", ProductType.STICKER.getValue());
+        model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/write-poster";
     }
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public String deleteById(@RequestParam String id) {
         posterService.deleteById(id);
         return "redirect:/posters/list";

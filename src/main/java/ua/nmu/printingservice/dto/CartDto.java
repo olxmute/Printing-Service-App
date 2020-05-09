@@ -12,4 +12,5 @@ public class CartDto {
     List<CartItemDto> items;
     int totalItemsCount;
     BigDecimal totalPrice;
+    String lastModifiedDate;
 }

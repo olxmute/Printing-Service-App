@@ -23,8 +23,12 @@ public class CartInterceptor extends HandlerInterceptorAdapter {
             var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (!"anonymousUser".equals(principal)) {
                 SecurityUser user = (SecurityUser) principal;
-                int itemsCount = cartRepository.findByActiveAndUser_Id(true, user.getId()).getItemsCount();
-                modelAndView.addObject("cartItemsCount", itemsCount);
+                var cart = cartRepository.findByActiveAndUser_Id(true, user.getId());
+                modelAndView.addObject("itemsCount", cart.getItemsCount());
+                modelAndView.addObject("totalPrice", cart.getTotalPrice());
+            } else {
+                modelAndView.addObject("itemsCount", 0);
+                modelAndView.addObject("totalPrice", 0);
             }
         }
     }

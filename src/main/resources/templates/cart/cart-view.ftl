@@ -2,46 +2,114 @@
 <@main "My cart"/>
 
 <#macro content>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="/home"><i class="fa fa-home"></i> Home</a>
+                        <a href="/posters/list">Shop</a>
+                        <span>Shopping Cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
 
-    <a href="/home">Continue shopping</a>
-    <div>
-        <#list cart.items as item>
-            <div><strong>${item.product.description}</strong></div>
-            <div>Material: ${item.product.materialName}</div>
-            <div>Paper quality: ${item.product.paperQuality}</div>
-            <#if item.product.orientation??>
-                <div>Orientation: ${item.product.orientation}</div>
-            </#if>
-            <div>Height: ${item.product.height}</div>
-            <div>Width: ${item.product.width}</div>
-            <div>Price: ${item.product.totalPrice}</div>
-            <div><img src="${item.product.image!}" alt="no image :("></div>
-            <div>
-                Product count in cart:
-                <form action="/cart/product/count" method="post">
-                    <input name="itemId" value="${item.id}" type="hidden">
-                    <input name="count" value="${item.productCount}" type="number">
-                    <input name="_csrf" value="${_csrf.token}" type="hidden"/>
-                    <button type="submit">Change count</button>
-                </form>
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="col-lg-4">
+                <div class="cart-buttons">
+                    <a href="/order-history" class="primary-btn checkout-btn">Show order history</a>
+                </div>
             </div>
-            <div>
-                <form action="/cart/product/delete" method="post">
-                    <input name="itemId" value="${item.id}" type="hidden">
-                    <input name="_csrf" value="${_csrf.token}" type="hidden"/>
-                    <button type="submit">Delete from cart</button>
-                </form>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <#list cart.items as item>
+
+                            <tr>
+                                <td class="cart-pic first-row"><img src="${item.product.image!}" alt=""></td>
+                                <td class="cart-title first-row">
+                                    <h5>${item.product.description} (${item.product.height}x${item.product.width}
+                                        cm)</h5>
+                                </td>
+                                <td class="p-price first-row">$${item.product.totalPrice}</td>
+                                <td class="qua-col first-row">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <form action="/cart/product/count" method="post">
+                                                <input name="itemId" value="${item.id}" type="hidden">
+                                                <input name="count" value="-1" type="hidden">
+                                                <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                                <button type="submit" class="dec qtybtn">-</button>
+                                            </form>
+                                            <input type="text" value="${item.productCount}">
+                                            <form action="/cart/product/count" method="post">
+                                                <input name="itemId" value="${item.id}" type="hidden">
+                                                <input name="count" type="hidden" value="1">
+                                                <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                                <button type="submit" class="inc qtybtn">+</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="total-price first-row">$${item.product.totalPrice * item.productCount}</td>
+                                <td class="close-td first-row">
+                                    <form action="/cart/product/delete" method="post">
+                                        <input name="itemId" value="${item.id}" type="hidden">
+                                        <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                        <button type="submit"><i class="ti-close"></i></button>
+                                    </form>
+                                </td>
+                                <#--                                    <form action="/cart/product/count" method="post">-->
+                                <#--                                        <input name="itemId" value="${item.id}" type="hidden">-->
+                                <#--                                        <input name="count" value="${item.productCount}" type="number">-->
+                                <#--                                        <input name="_csrf" value="${_csrf.token}" type="hidden"/>-->
+                                <#--                                        <button type="submit">Change count</button>-->
+                                <#--                                    </form>-->
+                                </#list>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="/home" class="primary-btn up-cart">Continue shopping</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                <ul>
+                                    <li class="subtotal">Total items <span>${cart.totalItemsCount}</span></li>
+                                    <li class="cart-total">Total <span>$${cart.totalPrice}</span></li>
+                                </ul>
+                                <form action="/cart" method="post">
+                                    <input name="_csrf" value="${_csrf.token}" type="hidden"/>
+                                    <button type="submit" class="proceed-btn">SUBMIT ORDER</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
-        </#list>
-    </div>
-    <div><strong>Total items: ${cart.totalItemsCount}</strong></div>
-    <div><strong>Total price: ${cart.totalPrice}</strong></div>
-    <div>
-        <form action="/cart" method="post">
-            <input name="_csrf" value="${_csrf.token}" type="hidden"/>
-            <button type="submit">Submit order</button>
-        </form>
-    </div>
+        </div>
+    </section>
 
 </#macro>
