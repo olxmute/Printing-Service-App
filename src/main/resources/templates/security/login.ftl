@@ -25,15 +25,14 @@
                                 <button type="submit" class="site-btn login-btn">Sign In</button>
                             </div>
 
-                            <#--TODO: process these guys -->
                             <#if RequestParameters.error??>
-                                <div>
-                                    <p>Invalid username and password.</p>
+                                <div class="holder login-error">
+                                    <div>Invalid username or password.</div>
                                 </div>
                             </#if>
                             <#if RequestParameters.logout??>
-                                <div>
-                                    <p>You have been logout.</p>
+                                <div class="holder logout">
+                                    <div>You have been logout.</div>
                                 </div>
                             </#if>
 

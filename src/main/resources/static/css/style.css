@@ -2951,7 +2951,6 @@ ol {
 	width: 100%;
 	height: 46px;
 	border: 2px solid #ebebeb;
-	margin-bottom: 25px;
 	padding-left: 15px;
 	border-radius: unset;
 	padding-right: 10px;
@@ -3868,6 +3867,15 @@ ol {
 	content: "";
 }
 
+.register-form .group-input span {
+	color: #d85d5c;
+}
+
+.error-holder {
+	font-size: 0.9rem;
+	color: #d85d5c;
+}
+
 .login-form .group-input.gi-check {
 	margin-bottom: 8px;
 }
@@ -3941,6 +3949,21 @@ ol {
 
 .container .errors .error-message {
 	font-size: 35px;
+}
+
+.holder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.holder.login-error {
+	color: #d85d5c;
+}
+
+.holder.logout {
+	color: #359730;
 }
 
 /* ------------------------------ Responsive Media Styles ---------------------------- */

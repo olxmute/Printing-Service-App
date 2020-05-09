@@ -3,6 +3,7 @@ package ua.nmu.printingservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,8 @@ import ua.nmu.printingservice.persistence.domain.enums.ProductType;
 import ua.nmu.printingservice.security.annotation.Access;
 import ua.nmu.printingservice.service.MaterialService;
 import ua.nmu.printingservice.service.PosterService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("posters")
@@ -34,7 +37,6 @@ public class PosterController {
     @GetMapping("add")
     public String getCreatePosterPage(Model model) {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
-        model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", new ProductWriteDto());
         model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/write-poster";
@@ -42,7 +44,14 @@ public class PosterController {
 
     @Access.Admin
     @PostMapping("write")
-    public String createPoster(@ModelAttribute ProductWriteDto productWriteDto) {
+    public String createPoster(@ModelAttribute @Valid ProductWriteDto productWriteDto,
+                               BindingResult bindingResult,
+                               Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("productType", ProductType.POSTER.getValue());
+            model.addAttribute("materials", materialService.getPosterMaterialsMap());
+            return "/products/write-poster";
+        }
         posterService.save(productWriteDto);
         return "redirect:/posters/list";
     }
@@ -51,7 +60,6 @@ public class PosterController {
     @GetMapping("update")
     public String getUpdatePage(@RequestParam String id, Model model) {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
-        model.addAttribute("orientations", Orientation.getOrientationMap());
         model.addAttribute("productWriteDto", posterService.finByIdForUpdate(id));
         model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/write-poster";

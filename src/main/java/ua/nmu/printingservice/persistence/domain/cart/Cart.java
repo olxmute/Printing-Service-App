@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class Cart extends BaseEntity {
         return items.stream()
                 .map(cartItem -> cartItem.getProduct().getTotalPrice().multiply(BigDecimal.valueOf(cartItem.getCount())))
                 .reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
+                .orElse(BigDecimal.ZERO)
+                .setScale(2, RoundingMode.CEILING);
     }
 }

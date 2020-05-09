@@ -47,33 +47,39 @@
                             </#if>
                         </h4>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <label for="prod-name">Product title<span>*</span></label>
                                 <@spring.formInput "productWriteDto.description" "id='prod-name'"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <label for="width">Width (cm)<span>*</span></label>
                                 <@spring.formInput "productWriteDto.width" "id='width' min='1' step='any'" "number"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <label for="height">Height (cm)<span>*</span></label>
                                 <@spring.formInput "productWriteDto.height" "id='height' min='1' step='any'" "number"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <label for="material">Material<span>*</span></label>
                                 <@spring.formSingleSelect "productWriteDto.materialId" materials "id='material'"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <div class="col-lg-12">
-                                <label for="base-price">Image<span>*</span></label>
-                                <div class="input-group mb-3">
+                            <div class="col-lg-12 mb-3">
+                                <label for="image">Image<span>*</span></label>
+                                <div class="input-group mb-2">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="fileInput"
                                                aria-describedby="inputGroupFileAddon01" onchange="encode()">
                                         <label class="custom-file-label shadow-none" for="fileInput">Choose file</label>
                                     </div>
                                 </div>
+                                <@spring.formHiddenInput "productWriteDto.image"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <label for="count">Count<span>*</span></label>
                                 <input name="count" value="1" id="count" type="number" min="1"/>
                             </div>
@@ -89,7 +95,6 @@
                     </div>
                     <div class="col-lg-6">
                         <img src="${productWriteDto.image!}" id="image-holder" alt="">
-                        <@spring.formHiddenInput "productWriteDto.image"/>
                     </div>
                 </div>
             </form>

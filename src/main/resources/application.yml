@@ -12,3 +12,6 @@ spring:
     expose-request-attributes: true
     template-loader-path: classpath:/templates
     suffix: .ftl
+  mvc:
+    locale: en_US
+    locale-resolver: fixed
