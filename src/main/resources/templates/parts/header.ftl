@@ -52,10 +52,10 @@
                         <li class="cart-icon">
                             <a href="/cart">
                                 <i class="icon_bag_alt"></i>
-                                <span>${itemsCount}</span>
+                                <span>${itemsCount!0}</span>
                             </a>
                         </li>
-                        <li class="cart-price">$${totalPrice}</li>
+                        <li class="cart-price">$${totalPrice!0}</li>
                     </ul>
                 </div>
             </div>
