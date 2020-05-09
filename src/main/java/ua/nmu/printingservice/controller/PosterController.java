@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.persistence.domain.enums.ProductType;
+import ua.nmu.printingservice.security.annotation.Access;
 import ua.nmu.printingservice.service.MaterialService;
 import ua.nmu.printingservice.service.PosterService;
 
@@ -29,6 +30,7 @@ public class PosterController {
         return "/products/product-list";
     }
 
+    @Access.Admin
     @GetMapping("add")
     public String getCreatePosterPage(Model model) {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
@@ -38,12 +40,14 @@ public class PosterController {
         return "/products/write-poster";
     }
 
+    @Access.Admin
     @PostMapping("write")
     public String createPoster(@ModelAttribute ProductWriteDto productWriteDto) {
         posterService.save(productWriteDto);
         return "redirect:/posters/list";
     }
 
+    @Access.Admin
     @GetMapping("update")
     public String getUpdatePage(@RequestParam String id, Model model) {
         model.addAttribute("materials", materialService.getPosterMaterialsMap());
@@ -53,6 +57,7 @@ public class PosterController {
         return "/products/write-poster";
     }
 
+    @Access.Admin
     @GetMapping("delete")
     public String deleteById(@RequestParam String id) {
         posterService.deleteById(id);

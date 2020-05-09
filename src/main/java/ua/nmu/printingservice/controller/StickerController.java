@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.nmu.printingservice.dto.ProductWriteDto;
 import ua.nmu.printingservice.persistence.domain.enums.ProductType;
+import ua.nmu.printingservice.security.annotation.Access;
 import ua.nmu.printingservice.service.MaterialService;
 import ua.nmu.printingservice.service.StickerService;
 
@@ -28,6 +29,7 @@ public class StickerController {
         return "/products/product-list";
     }
 
+    @Access.Admin
     @GetMapping("add")
     public String getCreateStickerPage(Model model) {
         model.addAttribute("materials", materialService.getStickerMaterialsMap());
@@ -36,12 +38,14 @@ public class StickerController {
         return "/products/write-poster";
     }
 
+    @Access.Admin
     @PostMapping("write")
     public String createSticker(@ModelAttribute ProductWriteDto productWriteDto) {
         stickerService.save(productWriteDto);
         return "redirect:/stickers/list";
     }
 
+    @Access.Admin
     @GetMapping("update")
     public String getUpdatePage(@RequestParam String id, Model model) {
         model.addAttribute("materials", materialService.getStickerMaterialsMap());
@@ -50,6 +54,7 @@ public class StickerController {
         return "/products/write-poster";
     }
 
+    @Access.Admin
     @GetMapping("delete")
     public String deleteById(@RequestParam String id) {
         stickerService.deleteById(id);
