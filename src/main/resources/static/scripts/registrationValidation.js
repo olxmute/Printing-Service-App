@@ -5,7 +5,7 @@ const password2 = document.getElementById('con-pass');
 
 const emailError = document.querySelector('#con-pass + .error-holder');
 
-password2.addEventListener('input', function (event) {
+password2.addEventListener('input', function () {
     if (password1.value === password2.value) {
         emailError.innerHTML = '';
     } else {
