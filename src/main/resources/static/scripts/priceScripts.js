@@ -6,7 +6,9 @@ const countElem = document.getElementById("count");
 
 let materialPriceMultipliers;
 
-window.onload = function () {
+loadMaterialPrices();
+
+function loadMaterialPrices() {
     const xhr = new XMLHttpRequest();
     const title = document.title;
     if (title === 'Poster') {
@@ -19,7 +21,7 @@ window.onload = function () {
     xhr.onload = function () {
         materialPriceMultipliers = JSON.parse(xhr.responseText);
     };
-};
+}
 
 function recalculatePrice() {
 

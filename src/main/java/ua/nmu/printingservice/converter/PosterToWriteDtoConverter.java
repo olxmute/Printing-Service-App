@@ -12,7 +12,6 @@ public class PosterToWriteDtoConverter implements Converter<Poster, ProductWrite
         return ProductWriteDto.builder()
                 .id(poster.getId())
                 .basePrice(poster.getBasePrice())
-                .orientation(poster.getOrientation())
                 .materialId(poster.getMaterial().getId())
                 .height(poster.getHeight())
                 .width(poster.getWidth())

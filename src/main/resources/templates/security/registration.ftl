@@ -14,25 +14,29 @@
                         <form action="/registration" method="post">
 
                             <div class="group-input">
-                                <label for="firstName">First name *</label>
+                                <label for="firstName">First name <span>*</span></label>
                                 <@spring.formInput "userDto.firstName" />
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
                             <div class="group-input">
-                                <label for="lastName">Last name *</label>
+                                <label for="lastName">Last name <span>*</span></label>
                                 <@spring.formInput "userDto.lastName"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
                             <div class="group-input">
-                                <label for="email">Email *</label>
-                                <@spring.formInput "userDto.email" "" "email"/>
+                                <label for="email">Email <span>*</span></label>
+                                <@spring.formInput "userDto.email"/>
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
                             <div class="group-input">
-                                <label for="password">Password *</label>
+                                <label for="password">Password <span>*</span></label>
                                 <@spring.formPasswordInput "userDto.password" />
+                                <@spring.showErrors "<br>" "error-holder"/>
                             </div>
-                            <#-- TODO: process this -->
                             <div class="group-input">
-                                <label for="con-pass">Confirm Password *</label>
+                                <label for="con-pass">Confirm Password <span>*</span></label>
                                 <input type="password" id="con-pass">
+                                <span class="error-holder"></span>
                             </div>
 
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -46,4 +50,5 @@
             </div>
         </div>
     </div>
+    <script src="/scripts/registrationValidation.js"></script>
 </#macro>

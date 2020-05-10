@@ -22,6 +22,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Data
 @SuperBuilder
@@ -52,7 +53,7 @@ public abstract class AbstractProduct extends BaseEntity {
     public abstract AbstractMaterial getMaterial();
 
     public BigDecimal getTotalPrice() {
-        return basePrice.add(basePrice.multiply(getMaterial().getPriceMultiplier()));
+        return basePrice.add(basePrice.multiply(getMaterial().getPriceMultiplier())).setScale(2, RoundingMode.CEILING);
     }
 
 }

@@ -14,26 +14,25 @@
                             <div>
                                 <div class="group-input">
                                     <label for="username">Email address *</label>
-                                    <#-- TODO: type="email"-->
-                                    <input type="text" id="username" name="username">
+                                    <input type="email" id="username" name="username" required
+                                           pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
                                 </div>
                                 <div class="group-input">
                                     <label for="pass">Password *</label>
-                                    <input id="pass" type="password" name="password">
+                                    <input id="pass" type="password" name="password" required>
                                 </div>
                                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                                 <button type="submit" class="site-btn login-btn">Sign In</button>
                             </div>
 
-                            <#--TODO: process these guys -->
                             <#if RequestParameters.error??>
-                                <div>
-                                    <p>Invalid username and password.</p>
+                                <div class="holder login-error">
+                                    <div>Invalid username or password.</div>
                                 </div>
                             </#if>
                             <#if RequestParameters.logout??>
-                                <div>
-                                    <p>You have been logout.</p>
+                                <div class="holder logout">
+                                    <div>You have been logout.</div>
                                 </div>
                             </#if>
 

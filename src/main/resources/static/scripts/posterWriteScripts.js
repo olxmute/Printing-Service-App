@@ -10,5 +10,7 @@ function encode() {
             document.getElementById("image").value = srcData;
         };
         fileReader.readAsDataURL(imageFile);
+
+        document.querySelector('.custom-file-label').innerText = imageFile.name;
     }
 }

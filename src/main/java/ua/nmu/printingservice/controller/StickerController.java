@@ -3,6 +3,7 @@ package ua.nmu.printingservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import ua.nmu.printingservice.persistence.domain.enums.ProductType;
 import ua.nmu.printingservice.security.annotation.Access;
 import ua.nmu.printingservice.service.MaterialService;
 import ua.nmu.printingservice.service.StickerService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("stickers")
@@ -40,7 +43,14 @@ public class StickerController {
 
     @Access.Admin
     @PostMapping("write")
-    public String createSticker(@ModelAttribute ProductWriteDto productWriteDto) {
+    public String createSticker(@ModelAttribute @Valid ProductWriteDto productWriteDto,
+                                BindingResult bindingResult,
+                                Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("productType", ProductType.STICKER.getValue());
+            model.addAttribute("materials", materialService.getStickerMaterialsMap());
+            return "/products/write-poster";
+        }
         stickerService.save(productWriteDto);
         return "redirect:/stickers/list";
     }
