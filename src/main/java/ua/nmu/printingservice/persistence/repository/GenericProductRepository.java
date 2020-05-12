@@ -17,4 +17,7 @@ public interface GenericProductRepository<T extends AbstractProduct> extends Jpa
     @Query("UPDATE AbstractProduct p SET p.active = false WHERE p = :product")
     void delete(@Param("product") T product);
 
+    @Query("SELECT p FROM AbstractProduct p")
+    List<T> findAllByDescriptionMatchesRegex(String regexMatch);
+
 }
