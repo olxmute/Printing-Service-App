@@ -26,8 +26,8 @@ public class StickerController {
     private final MaterialService materialService;
 
     @GetMapping("list")
-    public String getStickers(Model model) {
-        model.addAttribute("products", stickerService.findAll());
+    public String getStickers(Model model, @RequestParam(defaultValue = "") String q) {
+        model.addAttribute("products", stickerService.findAll(q));
         model.addAttribute("productType", ProductType.STICKER.getValue());
         return "/products/product-list";
     }

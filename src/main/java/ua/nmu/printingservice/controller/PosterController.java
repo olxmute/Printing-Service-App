@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.nmu.printingservice.dto.ProductWriteDto;
-import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.persistence.domain.enums.ProductType;
 import ua.nmu.printingservice.security.annotation.Access;
 import ua.nmu.printingservice.service.MaterialService;
@@ -27,8 +26,8 @@ public class PosterController {
     private final MaterialService materialService;
 
     @GetMapping("list")
-    public String getPosters(Model model) {
-        model.addAttribute("products", posterService.findAll());
+    public String getPosters(Model model, @RequestParam(defaultValue = "") String q) {
+        model.addAttribute("products", posterService.findAll(q));
         model.addAttribute("productType", ProductType.POSTER.getValue());
         return "/products/product-list";
     }
