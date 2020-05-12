@@ -1,7 +1,6 @@
 package ua.nmu.printingservice.persistence.repository;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import ua.nmu.printingservice.persistence.domain.product.Sticker;
 
 import java.util.List;
@@ -16,8 +15,8 @@ public interface StickerRepository extends GenericProductRepository<Sticker> {
                     AND (p.description REGEXP ?1)
                     AND p.user_id IS NULL
                     AND p.active = true
-                    ORDER BY p.created_date
+                    ORDER BY p.created_date DESC
                     """
     )
-    List<Sticker> findAllByDescriptionMatchesRegex(@Param("regexMatch") String regexMatch);
+    List<Sticker> findAllByDescriptionMatchesRegex(String regexMatch);
 }

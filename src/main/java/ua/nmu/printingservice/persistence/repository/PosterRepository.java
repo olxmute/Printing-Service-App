@@ -1,7 +1,6 @@
 package ua.nmu.printingservice.persistence.repository;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import ua.nmu.printingservice.persistence.domain.product.Poster;
 
 import java.util.List;
@@ -17,9 +16,9 @@ public interface PosterRepository extends GenericProductRepository<Poster> {
                     AND (p.description REGEXP ?1)
                     AND p.user_id IS NULL
                     AND p.active = true
-                    ORDER BY p.created_date
+                    ORDER BY p.created_date DESC
                     """
     )
-    List<Poster> findAllByDescriptionMatchesRegex(@Param("regexMatch") String regexMatch);
+    List<Poster> findAllByDescriptionMatchesRegex(String regexMatch);
 
 }
