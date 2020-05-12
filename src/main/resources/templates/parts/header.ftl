@@ -39,11 +39,14 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories</button>
-                        <#--TODO: search-->
-                        <form action="#" class="input-group">
-                            <input type="text" placeholder="What do you need?">
-                            <button type="button"><i class="ti-search"></i></button>
+                        <select class="category-btn">
+                            <option>All Categories</option>
+                            <option>Posters</option>
+                            <option>Stickers</option>
+                        </select>
+                        <form action="/posters/list" class="input-group header-search-form">
+                            <input type="text" placeholder="What do you need?" name="q">
+                            <button type="submit"><i class="ti-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -62,3 +65,4 @@
         </div>
     </div>
 </header>
+<script src="/scripts/searchScripts.js"></script>

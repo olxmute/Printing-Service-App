@@ -9,6 +9,8 @@ public interface ProductService {
 
     List<ProductReadDto> findAll();
 
+    List<ProductReadDto> findAll(String description);
+
     void save(ProductWriteDto productWriteDto);
 
     ProductWriteDto finByIdForUpdate(String id);
