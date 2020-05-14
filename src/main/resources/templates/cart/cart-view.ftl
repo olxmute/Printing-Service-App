@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
+                            <div class="product-create">
                                 <ul>
                                     <li class="subtotal">Total items <span>${cart.totalItemsCount}</span></li>
                                     <li class="cart-total">Total <span>$${cart.totalPrice}</span></li>

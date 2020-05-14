@@ -24,10 +24,10 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
-    <section class="checkout-section spad">
+    <section class="create-product-section spad">
         <div class="container">
             <@spring.bind "productWriteDto" />
-            <form method="post" class="checkout-form"
+            <form method="post" class="create-product-form"
                     <#if productType = 'POSTER'>
                         action="/posters/write"
                     <#else>

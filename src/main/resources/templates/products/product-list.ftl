@@ -53,13 +53,13 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Tags</h4>
                         <div class="fw-tags">
-                            <a href="#">Towel</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Coat</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
+                            <a href="#">Movies</a>
+                            <a href="#">Games</a>
+                            <a href="#">Superheroes</a>
+                            <a href="#">Marvel</a>
+                            <a href="#">Wild west</a>
+                            <a href="#">Star wars</a>
+                            <a href="#">Vikings</a>
                         </div>
                     </div>
                 </div>

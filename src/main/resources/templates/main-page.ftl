@@ -32,7 +32,7 @@
     <!-- Banner Section End -->
 
     <!-- Poster Banner Section Begin -->
-    <section class="women-banner spad">
+    <section class="poster-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
@@ -83,7 +83,7 @@
     <!-- Poster Banner Section End -->
 
     <!-- Sticker Banner Section Begin -->
-    <section class="man-banner spad">
+    <section class="sticker-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
