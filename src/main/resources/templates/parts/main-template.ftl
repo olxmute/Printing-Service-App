@@ -15,10 +15,10 @@
         <!-- Css Styles -->
         <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="/css/themify-icons.css" type="text/css">
-        <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="/css/themify-icons.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/elegant-icons.min.css" type="text/css">
         <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
-        <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="/css/nice-select.min.css" type="text/css">
         <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
         <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="/css/style.css" type="text/css">
@@ -43,7 +43,7 @@
     <script src="/js/jquery.nice-select.min.js"></script>
     <script src="/js/jquery.zoom.min.js"></script>
     <script src="/js/jquery.dd.min.js"></script>
-    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/jquery.slicknav.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
     </body>
