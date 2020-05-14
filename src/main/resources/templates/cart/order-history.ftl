@@ -21,11 +21,11 @@
     <!-- Breadcrumb End -->
 
     <!-- Order history Section Begin -->
-    <div class="faq-section spad">
+    <div class="order-history-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="faq-accordin">
+                    <div class="order-history-accordin">
                         <div class="accordion" id="accordionExample">
                             <#list carts as cart>
                                 <div class="card">
