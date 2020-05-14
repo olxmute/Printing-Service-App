@@ -1,2 +1,2 @@
-*.min.css linguist-detectable=false
-*.min.js linguist-detectable=false
+*.min.css linguist-generated
+*.min.js linguist-generated
