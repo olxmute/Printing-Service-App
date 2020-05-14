@@ -32,7 +32,6 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="/home">
-                            <#-- TODO: logo-->
                             <img src="/img/logo.png" alt="">
                         </a>
                     </div>
