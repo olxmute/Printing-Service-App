@@ -33,7 +33,7 @@ function recalculatePrice() {
         const select = document.getElementById("materialId");
         const selectedValue = select.options[select.selectedIndex].value;
 
-        const basePrice = width * height * 0.01;
+        const basePrice = width * height * 0.1;
         basePriceElem.value = basePrice.toFixed(2);
 
         const multiplier = materialPriceMultipliers[selectedValue];
