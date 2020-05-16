@@ -5,13 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import ua.nmu.printingservice.persistence.domain.enums.Orientation;
 import ua.nmu.printingservice.persistence.domain.material.PosterMaterial;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
@@ -28,8 +25,5 @@ public class Poster extends AbstractProduct {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private PosterMaterial material;
-
-    @Enumerated(EnumType.STRING)
-    private Orientation orientation;
 
 }

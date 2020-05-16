@@ -17,7 +17,6 @@ public class PosterToDtoConverter implements Converter<Poster, ProductReadDto> {
                 .description(poster.getDescription())
                 .height(poster.getHeight())
                 .width(poster.getWidth())
-                .orientation(capitalizeFully(poster.getOrientation().name()))
                 .totalPrice(poster.getTotalPrice())
                 .materialName(material.getTypeName())
                 .paperQuality(capitalizeFully(material.getPaperQuality().name()))
